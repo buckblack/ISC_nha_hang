@@ -1,9 +1,3 @@
-/*CKEDITOR.replace('binh_luan', {
-    customConfig: 'config_binh_luan.js'
-});
-CKEDITOR.replace('binh_luan2', {
-    customConfig: 'config_binh_luan.js'
-});*/
 
 function check_ghichu() {
     var kq = document.getElementsByClassName('table_ghichu')
@@ -19,15 +13,17 @@ function check_ghichu() {
             }
     }
 }
+
 function aaa(kq) {
     kq(document.getElementsByClassName('table_ban'))
 }
+
 function check_ban() {
-    var kq = document.getElementsByClassName('table_ban')
-    aaa(kq=>{
+    //var kq = document.getElementsByClassName('table_ban')
+    aaa(kq => {
         var check = document.getElementById('check_ban')
         check.onclick = () => {
-    
+
             if (check.checked == false)
                 for (var i = 0; i < kq.length; i++) {
                     kq[i].classList.add("d-none");
@@ -38,7 +34,7 @@ function check_ban() {
                 }
         }
     })
-    
+
 };
 
 function check_img() {
@@ -74,10 +70,11 @@ function check_status() {
 };
 
 
-
-btn_capnhat.onclick = () => {
-    btn_close_detai.click()
-};
+function cap_nhat_san_pham() {
+    btn_capnhat.onclick = () => {
+        btn_close_detai.click()
+    };
+}
 
 function chon_ban(ma_ban) {
     var ban = document.getElementById(`ban_${ma_ban}`)

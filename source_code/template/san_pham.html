@@ -268,7 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div class="row float-right">
                                             <button class="btn btn-success mx-2" data-toggle="modal" data-target="#modal-update"
-                                                id="btn_capnhat"><i class="fa fa-check-circle-o"></i> Cập nhật</button>
+                                                id="btn_capnhat" onclick="cap_nhat_san_pham()"><i class="fa fa-check-circle-o"></i> Cập nhật</button>
                                             <button class="btn btn-danger mx-2"><i class="fa fa-lock"></i> Ngừng kinh
                                                 doanh</button>
                                             <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
@@ -328,11 +328,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                         <label>Mô tả</label>
                                         <textarea name="binh_luan" id="binh_luan" class="ckeditor"></textarea>
-
+                                        
 
 
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="
+                                            modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                         <button type="button" class="btn btn-primary">Thêm</button>
                                     </div>
@@ -386,6 +387,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                         <label>Mô tả</label>
                                         <textarea name="binh_luan" id="binh_luan2" class="ckeditor"></textarea>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -419,8 +421,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="ckeditor/styles.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/styles.js"></script>
     <script src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.slimscroll.js"></script>
@@ -430,6 +432,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="js/myscript.js"></script>
+    <script>
+        CKEDITOR.replace('binh_luan', {
+            customConfig: 'config_binh_luan.js'
+        });
+    </script>
+    <script>
+        CKEDITOR.replace('binh_luan2', {
+            customConfig: 'config_binh_luan.js'
+        });
+    </script>
 
 </body>
 

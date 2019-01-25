@@ -134,9 +134,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             Danh sách hóa đơn
                         </div>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <a class="navbar-brand" href="#">Hóa đơn</a>
+                            <a class="navbar-brand mr-auto" href="#">Hóa đơn</a>
+
                             <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+                                <button class="btn btn-success dropdown-toggle " type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-align-justify"></i>
                                 </button>
@@ -146,7 +147,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="dropdown-item form-group form-check">
                                             <input type="checkbox" class="form-check-input" id="check_ban" onclick="check_ban()">
                                             <label class="
-                                                form-check-label">Bàn đã ngồi</label>
+                                                form-check-label">Bàn
+                                                đã ngồi</label>
                                         </div>
                                         <div class="dropdown-item form-group form-check">
                                             <input type="checkbox" class="form-check-input" id="check_ghichu" onclick="check_ghichu()">
@@ -155,7 +157,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="dropdown-item form-group form-check">
                                             <input type="checkbox" class="form-check-input" id="check_status" onclick="check_status()">
                                             <label class="
-                                                form-check-label">Trạng thái</label>
+                                                form-check-label">Trạng
+                                                thái</label>
                                         </div>
                                     </div>
                                 </div>
@@ -218,62 +221,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="h3 text-primary">Sản phẩm ABC</div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <img src="images/1.png" class="img-fluid w-100" alt="">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Mã hàng hóa:</td>
-                                                            <td><strong>SP01111</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tên hàng hóa:</td>
-                                                            <td><strong>Sản phẩm ABC</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Loại hàng:</td>
-                                                            <td><strong>Khác</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Số lượng:</td>
-                                                            <td><strong>10</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Giá bán:</td>
-                                                            <td><strong>30,000</strong></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Tình trạng:</td>
-                                                            <td><strong>Cho phép kinh doanh</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Mô tả:</td>
-                                                            <td>kajfd ak gra grfkjgfkasgf uai giua gfuodf gouadgf </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        <div class="row w-100">
+                                            <div class="h3 text-primary mr-auto">Hóa đơn 123</div>
+                                            <div class="h3 text-danger">Tổng tiền:288,000 VNĐ</div>
                                         </div>
-                                        <div class="row float-right">
-                                            <button class="btn btn-danger mx-2"><i class="fa fa-lock"></i> Ngừng kinh
-                                                doanh</button>
-                                            <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
+                                        <div class="row w-100">
+                                                <div class="h6 mr-auto">Người lập: NVA</div>
+                                                <div class="h6">Ngày lập: 1-1-2019</div>
+                                            </div>
+                                        <div class="row w-100">
+                                                <div class="h6 mr-auto">Khách hàng: Khách lẻ</div>
+                                                <div class="h6">Tình trạng:Đã thanh toán</div>
+                                            </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <table class="table table-striped table-hover table-bordered table-responsive d-lg-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Mã sản phẩm</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Thành tiền</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>1</td>
+                                                            <td>2</td>
+                                                            <td>3</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>3</td>
+                                                            <td>2</td>
+                                                            <td>9</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="btn_close_detai"
                                             data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-primary">Thêm</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -304,8 +300,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="ckeditor/styles.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/styles.js"></script>
+
     <script src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.slimscroll.js"></script>
