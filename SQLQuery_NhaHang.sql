@@ -1,4 +1,4 @@
-create database QUAN_LY_NHA_HANG
+creat database QUAN_LY_NHA_HANG
 
 GO
 use QUAN_LY_NHA_HANG
@@ -30,13 +30,18 @@ go
 create table PhieuNhapTra(
  id_phieu int not null identity primary key,
  pnt_ngaylap date,
- pnt_loaiphieu nvarchar(50)
+ pnt_loaiphieu nvarchar(50),
+ id_nhanvien int,
+ id_nhacungcap int
 )
 
 go
 create table ChiTietPhieu(
  ctp_soluong int,
- ctn_gia int
+ ctn_gia int,
+ id_nguyenlieu int not null,
+ id_phieu int not null,
+ primary key (id_nguyenlieu, id_phieu)
 )
 
 go
@@ -48,19 +53,24 @@ create table NguyenLieu(
 )
 
 go
-create table CongThuc(
- ct_soluong float
-)
-
-go
 create table MonAn(
  id_monan int not null identity primary key,
  ma_ten nvarchar(50),
  ma_dongia float,
  ma_hinh nvarchar(50),
  ma_trangthai bit,
- ma_noidung nvarchar(100)
+ ma_noidung nvarchar(100),
+ id_loaimonan int 
 )
+
+go
+create table CongThuc(
+ ct_soluong float,
+ id_monan int not null,
+ id_nguyenlieu int not null,
+ primary key(id_monan, id_nguyenlieu)
+)
+
 
 go
 create table LoaiMonAn(
@@ -74,13 +84,19 @@ create table HoaDon(
  id_hoadon int not null identity primary key,
  hd_ngaydat date,
  hd_trangthai bit,
- hd_ghichu nvarchar(50)
+ hd_ghichu nvarchar(50),
+ id_nhanvien int,
+ id_ban int,
+ id_khachhang int
 )
 
 go
 create table ChiTietDatBan(
  cthd_soluong int,
- cthd_dongia float
+ cthd_dongia float,
+ id_monan int not null,
+ id_hoadon int not null,
+ primary key(id_monan, id_hoadon)
 )
 
 go
@@ -101,11 +117,6 @@ create table KhachHang(
  kh_dienthoai varchar(10),
  kh_ghichu nvarchar(50)
 )
-go
-alter table PhieuNhapTra
- add constraint fk_PhieuNhapTra_NhaCungCap  foreign key(id_nhacungcung) references NhaCungCap(id_nhacungcap),
- constraint fk_PhieuNhapTra_NhanVien foreign key(id_nhanvien) references NhanVien(id_nhanvien)
 
-go
 
       
