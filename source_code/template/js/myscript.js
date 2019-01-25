@@ -1,8 +1,8 @@
 
 function check_ghichu() {
-    var kq = document.getElementsByClassName('table_ghichu')
+    var kq = document.querySelectorAll('.table_ghichu')
     var check = document.getElementById('check_ghichu')
-    check.onclick = function () {
+    check.onchange = function () {
         if (check.checked == false)
             for (var i = 0; i < kq.length; i++) {
                 kq[i].classList.add("d-none");
@@ -14,15 +14,15 @@ function check_ghichu() {
     }
 }
 
-function aaa(kq) {
-    kq(document.getElementsByClassName('table_ban'))
-}
+
+
+
+
 
 function check_ban() {
-    //var kq = document.getElementsByClassName('table_ban')
-    aaa(kq => {
+    var kq = document.querySelectorAll('.table_ban')
         var check = document.getElementById('check_ban')
-        check.onclick = () => {
+        check.onchange = () => {
 
             if (check.checked == false)
                 for (var i = 0; i < kq.length; i++) {
@@ -33,14 +33,14 @@ function check_ban() {
                     kq[i].classList.remove("d-none");
                 }
         }
-    })
+    
 
 };
 
 function check_img() {
-    var kq = document.getElementsByClassName('table_hinh')
+    var kq = document.querySelectorAll('.table_hinh')
     var check = document.getElementById('check_img')
-    check.onclick = () => {
+    check.onchange = () => {
 
         if (check.checked == false)
             for (var i = 0; i < kq.length; i++) {
@@ -54,9 +54,9 @@ function check_img() {
 };
 
 function check_status() {
-    var kq = document.getElementsByClassName('table_status')
+    var kq = document.querySelectorAll('.table_status')
     var check = document.getElementById('check_status')
-    check.onclick = () => {
+    check.onchange = () => {
 
         if (check.checked == false)
             for (var i = 0; i < kq.length; i++) {
