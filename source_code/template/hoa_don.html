@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 
 <head>
-    <title>Sản phẩm</title>
+    <title>Hóa đơn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -131,12 +131,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="table-agile-info p-0">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Danh sách hàng hóa
+                            Danh sách hóa đơn
                         </div>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <a class="navbar-brand" href="#">Hàng hóa</a>
-                            <button class="btn btn-success my-2 my-sm-0 mr-3 ml-lg-auto" data-toggle="modal"
-                                data-target="#modal-add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+                            <a class="navbar-brand" href="#">Hóa đơn</a>
                             <div class="dropdown">
                                 <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -146,12 +144,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="dropdown-menu dropdown-menu-right bg-success float-right"
                                         aria-labelledby="dropdownMenuButton">
                                         <div class="dropdown-item form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="check_img" onclick="check_img()">
-                                            <label class="form-check-label">Hình ảnh</label>
+                                            <input type="checkbox" class="form-check-input" id="check_ban" onclick="check_ban()">
+                                            <label class="
+                                                form-check-label">Bàn đã ngồi</label>
+                                        </div>
+                                        <div class="dropdown-item form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="check_ghichu" onclick="check_ghichu()">
+                                            <label class="form-check-label">Ghi chú</label>
                                         </div>
                                         <div class="dropdown-item form-group form-check">
                                             <input type="checkbox" class="form-check-input" id="check_status" onclick="check_status()">
-                                            <label class="form-check-label">Tình trạng</label>
+                                            <label class="
+                                                form-check-label">Trạng thái</label>
                                         </div>
                                     </div>
                                 </div>
@@ -161,32 +165,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th class="table_hinh d-none">Hình</th>
-                                    <th>Mã hàng</th>
-                                    <th>Tên hàng</th>
-                                    <th>Giá bán</th>
-                                    <th>Loại hàng</th>
-                                    <th>Số lượng</th>
+
+                                    <th>Mã Hóa đơn</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Người lập</th>
+                                    <th>Ngày</th>
+                                    <th>Tổng tiền</th>
+                                    <th class="table_ban d-none">Bàn</th>
+                                    <th class="table_ghichu d-none">Ghi chú</th>
                                     <th class="table_status d-none">Trạng thái</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr data-toggle="modal" data-target="#modal-detai">
-                                    <td class="table_hinh d-none">1</td>
+                                    <td>1</td>
                                     <td>1</td>
                                     <td>2</td>
                                     <td>3</td>
                                     <td>4</td>
-                                    <td>5</td>
-                                    <td class="table_status d-none">1</td>
-                                </tr>
-                                <tr data-toggle="modal" data-target="#modal-detai">
-                                    <td class="table_hinh d-none">1</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>6</td>
-                                    <td>6</td>
-                                    <td>5</td>
+                                    <td class="table_ban d-none">5</td>
+                                    <td class="table_ghichu d-none">1</td>
                                     <td class="table_status d-none">1</td>
                                 </tr>
                             </tbody>
@@ -214,7 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Chi tiết sản phẩm</h5>
+                                        <h5 class="modal-title">Chi tiết hóa đơn</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -267,8 +265,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </div>
                                         </div>
                                         <div class="row float-right">
-                                            <button class="btn btn-success mx-2" data-toggle="modal" data-target="#modal-update"
-                                                id="btn_capnhat"><i class="fa fa-check-circle-o"></i> Cập nhật</button>
                                             <button class="btn btn-danger mx-2"><i class="fa fa-lock"></i> Ngừng kinh
                                                 doanh</button>
                                             <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
@@ -282,118 +278,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="modal-add-new" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Thêm sản phẩm mới</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Tên hàng</label>
-                                            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Loại hàng</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Đơn giá</label>
-                                            <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Đơn vị tính</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Hình ảnh</label>
-                                            <input type="file" class="form-control-file">
-                                        </div>
 
-                                        <label>Mô tả</label>
-                                        <textarea name="binh_luan" id="binh_luan" class="ckeditor"></textarea>
-
-
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-primary">Thêm</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Cập nhật sản phẩm</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Tên hàng</label>
-                                            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Loại hàng</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Đơn giá</label>
-                                            <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Đơn vị tính</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Hình ảnh</label>
-                                            <input type="file" class="form-control-file">
-                                        </div>
-
-                                        <label>Mô tả</label>
-                                        <textarea name="binh_luan" id="binh_luan2" class="ckeditor"></textarea>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-primary">Thêm</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>

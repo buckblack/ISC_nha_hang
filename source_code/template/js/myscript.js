@@ -1,46 +1,92 @@
-CKEDITOR.replace('binh_luan', {
+/*CKEDITOR.replace('binh_luan', {
     customConfig: 'config_binh_luan.js'
 });
 CKEDITOR.replace('binh_luan2', {
     customConfig: 'config_binh_luan.js'
-});
+});*/
 
-check_img.onclick = () => {
+function check_ghichu() {
+    var kq = document.getElementsByClassName('table_ghichu')
+    var check = document.getElementById('check_ghichu')
+    check.onclick = function () {
+        if (check.checked == false)
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.add("d-none");
+            }
+        else
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.remove("d-none");
+            }
+    }
+}
+function aaa(kq) {
+    kq(document.getElementsByClassName('table_ban'))
+}
+function check_ban() {
+    var kq = document.getElementsByClassName('table_ban')
+    aaa(kq=>{
+        var check = document.getElementById('check_ban')
+        check.onclick = () => {
+    
+            if (check.checked == false)
+                for (var i = 0; i < kq.length; i++) {
+                    kq[i].classList.add("d-none");
+                }
+            else
+                for (var i = 0; i < kq.length; i++) {
+                    kq[i].classList.remove("d-none");
+                }
+        }
+    })
+    
+};
+
+function check_img() {
     var kq = document.getElementsByClassName('table_hinh')
-    if (check_img.checked == true)
-        for (var i = 0; i < kq.length; i++) {
-            kq[i].style.display = "none"
-            console.log(kq[i].innerHTML);
-        }
-    else
-        for (var i = 0; i < kq.length; i++) {
-            kq[i].style.display = "block"
-        }
-}
-check_status.onclick = () => {
+    var check = document.getElementById('check_img')
+    check.onclick = () => {
+
+        if (check.checked == false)
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.add("d-none");
+            }
+        else
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.remove("d-none");
+            }
+    }
+};
+
+function check_status() {
     var kq = document.getElementsByClassName('table_status')
-    if (check_status.checked == true)
-        for (var i = 0; i < kq.length; i++) {
-            kq[i].style.display = "none"
-            console.log(kq[i].innerHTML);
-        }
-    else
-        for (var i = 0; i < kq.length; i++) {
-            kq[i].style.display = "block"
-        }
-}
+    var check = document.getElementById('check_status')
+    check.onclick = () => {
+
+        if (check.checked == false)
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.add("d-none");
+            }
+        else
+            for (var i = 0; i < kq.length; i++) {
+                kq[i].classList.remove("d-none");
+            }
+    }
+};
+
+
+
 btn_capnhat.onclick = () => {
     btn_close_detai.click()
-}
+};
 
 function chon_ban(ma_ban) {
-    var ban=document.getElementById(`ban_${ma_ban}`)
-    var img=ban.getAttribute("src");
-    ban.setAttribute("src","images/chair2.png") 
+    var ban = document.getElementById(`ban_${ma_ban}`)
+    var img = ban.getAttribute("src");
+    ban.setAttribute("src", "images/chair2.png")
 }
 
 function chon_mon(ma_mon) {
-    ds_mon.innerHTML+=`
+    ds_mon.innerHTML += `
     <tr>
         <th class="align-middle">1</th>
         <td class="align-middle"><i class="fa fa-remove text-danger"></i></td>
