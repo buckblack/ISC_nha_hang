@@ -71,9 +71,10 @@ function check_status() {
 
 
 function cap_nhat_san_pham() {
-    btn_capnhat.onclick = () => {
+    $('#btn_capnhat').click(function (e) { 
         btn_close_detai.click()
-    };
+    });
+    
 }
 
 function chon_ban(ma_ban) {

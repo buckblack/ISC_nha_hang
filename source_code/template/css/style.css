@@ -3193,5 +3193,9 @@ input.hoa-don
     margin: 0 auto !important;
 }
 
+.modal {
+    overflow-y:auto;
+  }
+
 
 
