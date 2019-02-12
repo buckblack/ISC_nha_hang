@@ -296,21 +296,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <button class="btn btn-control disabled"><i class="fa fa-street-view"></i><a href="#">Bàn 1 / Lầu 1</a></button>
                                 <table class="table table-hover table-striped table-responsive d-lg-table">
                                     <tbody id="ds_mon">
-                                        <tr>
-                                            <th class="align-middle">1</th>
-                                            <td class="align-middle"><i class="fa fa-remove text-danger"></i></td>
+                                        <tr id="tr_gio_hang_1">
+                                            <th class="align-middle">1</th>                <!--hóa đơn, món, số lượng -->
+                                            <td class="align-middle"><a href="#" onclick="xoa_gio_hang(1,1,1)"><i class="fa fa-remove text-danger"></i></a></td>
                                             <td class="align-middle">Tên món ăn ABC</td>
-                                            <td class="align-middle"><input class="form-control hoa-don" type="number" value="1"></td>
-                                            <td class="align-middle">30,000</td>
-                                            <td class="align-middle"><strong>30,000</strong></td>
+                                            <td class="align-middle"><input class="form-control hoa-don" id="soluong_1" type="number" onchange="doi_so_luong_gio_hang(1)" type="number" value="1"></td>
+                                            <td class="align-middle" id='gia_1'>30000</td>
+                                            <td class="align-middle"><strong id='tongtien_1'>30000</strong></td>
                                         </tr>
-                                        <tr>
-                                                <th class="align-middle">2</th>
-                                                <td class="align-middle"><i class="fa fa-remove text-danger"></i></td>
-                                                <td class="align-middle">Tên món ăn ABC</td>
-                                                <td class="align-middle"><input class="form-control hoa-don" type="number" value="1"></td>
-                                                <td class="align-middle">30,000</td>
-                                                <td class="align-middle"><strong>30,000</strong></td>
+                                        <tr id="tr_gio_hang_2">
+                                            <th class="align-middle">2</th>
+                                            <td class="align-middle"><a href="#" onclick="xoa_gio_hang(2,1,1)"><i class="fa fa-remove text-danger"></i></a></td>
+                                            <td class="align-middle">Tên món ăn ABC</td>                                        <!--hóa đơn -->
+                                            <td class="align-middle"><input class="form-control hoa-don" id="soluong_2" type="number" onchange="doi_so_luong_gio_hang(2)" value="1"></td>
+                                            <td class="align-middle" id='gia_2'>30000</td>
+                                            <td class="align-middle"><strong id='tongtien_2'>30000</strong></td>
                                             </tr>
                                             
                                     </tbody>

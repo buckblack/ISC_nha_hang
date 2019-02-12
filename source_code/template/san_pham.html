@@ -172,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-toggle="modal" data-target="#modal-detai">
+                                <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(132,'images/1.png')">
                                     <td class="table_hinh d-none">1</td>
                                     <td>1</td>
                                     <td>2</td>
@@ -181,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <td>5</td>
                                     <td class="table_status d-none">1</td>
                                 </tr>
-                                <tr data-toggle="modal" data-target="#modal-detai">
+                                <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(456,'images/1.png')">
                                     <td class="table_hinh d-none">1</td>
                                     <td>2</td>
                                     <td>4</td>
@@ -214,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- modal chi tiết -->
                         <div class="modal fade" id="modal-detai" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                             aria-hidden="true">
-                            <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Chi tiết sản phẩm</h5>
@@ -223,75 +223,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="h3 text-primary">Sản phẩm ABC</div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <img src="images/1.png" class="img-fluid w-100" alt="">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Mã hàng hóa:</td>
-                                                            <td><strong>SP01111</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tên hàng hóa:</td>
-                                                            <td><strong>Sản phẩm ABC</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Loại hàng:</td>
-                                                            <td><strong>Khác</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Số lượng:</td>
-                                                            <td><strong>10</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Giá bán:</td>
-                                                            <td><strong>30,000</strong></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Tình trạng:</td>
-                                                            <td><strong>Cho phép kinh doanh</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Mô tả:</td>
-                                                            <td>kajfd ak gra grfkjgfkasgf uai giua gfuodf gouadgf </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="row float-right form-inline">
-                                            <!--
-                                            <button class="btn btn-success mx-2" data-toggle="modal" data-target="#modal-update"
-                                                id="btn_capnhat" onclick="cap_nhat_san_pham()"><i class="fa fa-check-circle-o"></i>
-                                                Cập nhật</button>
-                                            <button class="btn btn-danger mx-2"><i class="fa fa-lock"></i> Ngừng kinh
-                                                doanh</button>
-                                            <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
-                                            -->
-                                            <ul class="nav nav-pills nav-fill m-3">
-                                                    <li class="nav-item" id="btn_capnhat" data-dismiss="modal" data-toggle="modal" data-target="#modal-update">
-                                                        <a class="nav-link btn btn-success btn-lg mx-2 mt-2" href="#" 
-                                                         ><i class="fa fa-check-circle-o"></i> Cập nhật</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link btn btn-danger btn-lg mx-2 mt-2" href="#"><i class="fa fa-lock"></i> Ngừng kinh doanh</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link btn btn-primary btn-lg mx-2 mt-2" href="#"><i class=" fa fa-trash-o"></i> Xóa</a>
-                                                    </li>
-                                                </ul>
-                                        </div>
+                                            <div id='modaldetail'>
+                            
+                                                </div>
                                     </div>
+                                    
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary">Thêm</button>
                                         <button type="button" class="btn btn-info" data-dismiss="modal" id="btn_cong_thuc"
@@ -301,8 +237,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                </div>
+                                </div>
+                        
 
                         <!-- modal thêm mới -->
                         <div class="modal fade" id="modal-add-new" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -367,59 +304,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                         <!-- Modal cập nhật-->
                         <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Cập nhật sản phẩm</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                    </div>
-                                    <div class="modal-body">
-                                            <div class="form-group">
-                                                    <label>Tên hàng</label>
-                                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Loại hàng</label>
-                                                    <select class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Đơn giá</label>
-                                                    <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Đơn vị tính</label>
-                                                    <select class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Hình ảnh</label>
-                                                    <input type="file" class="form-control-file">
-                                                </div>
-        
-                                                <label>Mô tả</label>
-                                                <textarea name="binh_luan" id="binh_luan2" class="ckeditor"></textarea>
-                                    </div>
-                                    <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary">Thêm</button>
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Cập nhật sản phẩm</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div id='modalupdate'>
 
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                    </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary">Thêm</button>
+                            
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
+                        
                         
 
                         <!-- modal thành phần -->
@@ -447,8 +355,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="my-3 row justify-content-center">
                                                 
                                             <input class="form-control w-25" id="tp_soluong" type="number" value="0">
-                                            <button class="btn btn-outline-success" id="btn_tp_down" type="button" onclick="return uptodown()"><i class="fa fa-angle-double-down"></i></button>
-                                            <button class="btn btn-outline-success" id="btn_tp_up" type="button" onclick="return downtoup()"><i class="fa fa-angle-double-up"></i></button>
+                                            <button class="btn btn-outline-success" id="btn_tp_down" type="button" onclick="return uptodown()"><i class="fa fa-angle-down"></i></button>
+                                            <button class="btn btn-outline-success" id="btn_tp_up" type="button" onclick="return downtoup()"><i class="fa fa-angle-up"></i></button>
 
                                         </div>
                                         <label for="">Thành phần hiện tại:</label>
@@ -464,6 +372,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- madal load hình -->
+                        <div class="modal fade" id="modal-loadhinh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-full" role="document">
+                            <div class="modal-content">
+                
+                            <div class="modal-body">
+                                <div id='dia_chi_img'>
+
+                                </div>
+                                
+                            </div>
+                
+                            </div>
+                        </div>
                         </div>
 
                     </div>
@@ -508,9 +432,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-        CKEDITOR.replace('binh_luan2', {
-            customConfig: 'config_binh_luan.js'
-        });
+        
     </script>
 
 </body>

@@ -3197,5 +3197,10 @@ input.hoa-don
     overflow-y:auto;
   }
 
+  .modal-full {
+    min-width: 95%;
+    margin: auto;
+}
+
 
 
