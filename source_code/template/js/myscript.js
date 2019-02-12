@@ -95,3 +95,46 @@ function chon_mon(ma_mon) {
     </tr>
     `
 }
+
+//thành phần
+
+function tach_chuoi_thanh_phan(chuoi,kytu) {
+    var kq=chuoi.split(kytu);
+    return kq;
+}
+
+function timthanhphan()
+{
+    sl_tp_up.innerHTML=`
+    <option value="1">A: (gr)</option>
+    <option value="2">B: (gr)</option>
+    <option value="3">C: (gr)</option>
+    `
+}
+
+function uptodown(){
+    var up=document.getElementById('sl_tp_up'); 
+    if(up.value!='')
+    {
+        var chuoi=tach_chuoi_thanh_phan(up.options[up.selectedIndex].text,':')
+        sl_tp_down.innerHTML+=`<option value="${up.value}">${chuoi[0]}: ${tp_soluong.value}${chuoi[1]}</option>`
+        $('#sl_tp_up option:selected').remove();
+    }
+    
+}
+
+function downtoup(){
+    var down=document.getElementById('sl_tp_down');
+
+    if(down.value!='')
+    {
+        var chuoi=tach_chuoi_thanh_phan(down.options[down.selectedIndex].text,':')
+        var donvi=tach_chuoi_thanh_phan(chuoi[1],'(')
+        donvi=donvi[1].split(')')
+        sl_tp_up.innerHTML+=`<option value="${down.value}">${chuoi[0]}: (${donvi[0]})</option>`
+        $('#sl_tp_down option:selected').remove();
+    }
+    
+}
+//kết thúc thành phần
+                                        

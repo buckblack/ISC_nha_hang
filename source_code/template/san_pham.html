@@ -435,31 +435,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="modal-body">
                                         <div class="input-group">
-                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i>
+                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" required>
+                                            <button class="btn btn-outline-success" type="button" id="btn_tp_search" onclick="timthanhphan()"><i class="fa fa-search"></i>
                                                 Tìm</button>
                                         </div>
                                         <label for="">Thành phần:</label>
-                                        <select class="custom-select form-control-lg" size="5">
-                                            <option value="1">A</option>
-                                            <option value="2">B</option>
-                                            <option value="3">C</option>
+                                        <select class="custom-select form-control-lg" size="5" id="sl_tp_up">
+                                            
                                         </select>
 
                                         <div class="my-3 row justify-content-center">
                                                 
                                             <input class="form-control w-25" id="tp_soluong" type="number" value="0">
-                                            <button class="btn btn-outline-success" id="tp_down" type="submit"><i class="fa fa-angle-double-down"></i></button>
-                                            <button class="btn btn-outline-success" id="tp_up" type="submit"><i class="fa fa-angle-double-up"></i></button>
+                                            <button class="btn btn-outline-success" id="btn_tp_down" type="button" onclick="return uptodown()"><i class="fa fa-angle-double-down"></i></button>
+                                            <button class="btn btn-outline-success" id="btn_tp_up" type="button" onclick="return downtoup()"><i class="fa fa-angle-double-up"></i></button>
 
                                         </div>
                                         <label for="">Thành phần hiện tại:</label>
-                                        <select class="custom-select form-control-lg" size="5">
-                                            <option value="4">D: 500gr</option>
-                                            <option value="5">E: 500gr</option>
-                                            <option value="6">F: 500gr</option>
+                                        <select class="custom-select form-control-lg" size="5" id="sl_tp_down">
+                                            <option value="4">D: 500(gr)</option>
+                                            <option value="5">E: 500(gr)</option>
+                                            <option value="6">F: 500(gr)</option>
                                         </select>
-
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
