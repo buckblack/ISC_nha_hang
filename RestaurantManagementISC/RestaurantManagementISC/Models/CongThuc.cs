@@ -9,6 +9,9 @@ namespace RestaurantManagementISC.Models
     [Table("CongThuc")]
     public class CongThuc
     {
+        [Column("id_congthuc")]
+        public int Id { get; set; }
+
         [Column("ct_soluong")]
         public float soluong { get; set; }
 
