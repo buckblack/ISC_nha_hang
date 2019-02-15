@@ -9,7 +9,7 @@ namespace RestaurantManagementISC.Models
     [Table("ChiTietDatBan")]
     public class ChiTietDatBan
     {
-        [Column("id_ctdban")]
+        [Column("id_ctdatban")]
         public int Id { get; set; }
 
         [Column("ctdb_soluong")]
