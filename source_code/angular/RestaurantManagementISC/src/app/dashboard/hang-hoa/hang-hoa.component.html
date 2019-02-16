@@ -44,7 +44,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(132,'/assets/images/1.png')">
+                                    <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(132,'/assets/images/1.png')"> -->
+                                    <tr data-toggle="modal" data-target="#modal-detai" (click)="modal_detail()">
                                     <td class="table_hinh d-none">1</td>
                                     <td>1</td>
                                     <td>2</td>
@@ -159,7 +160,8 @@
                                         </div>
 
                                         <label>Mô tả</label>
-                                        <textarea name="binh_luan" id="binh_luan" class="ckeditor"></textarea>
+                                        <ckeditor [(ngModel)]="cke_them" name="cke_them"></ckeditor>
+                                        <button (click)='show()'></button>
 
 
                                     </div>
@@ -175,7 +177,7 @@
                         
                         <!-- Modal cập nhật-->
                         <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Cập nhật sản phẩm</h5>
@@ -187,6 +189,7 @@
                                                 <div id='modalupdate'>
 
                                                     </div>
+                                                    <ckeditor [(ngModel)]="cke_them" name="cke_them"></ckeditor>
                                                 
                                         </div>
                                         <div class="modal-footer">

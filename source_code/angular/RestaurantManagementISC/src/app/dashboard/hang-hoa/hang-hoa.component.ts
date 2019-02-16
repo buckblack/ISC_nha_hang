@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HangHoaComponent implements OnInit {
 
+  cke_them = `
+  `;
   constructor() { }
 
   ngOnInit() {
   }
 
+  show(){
+    console.log(this.cke_them);
+  }
 }

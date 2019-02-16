@@ -139,7 +139,6 @@ function downtoup() {
 function thongtinsp(masp, image) {
 
   modaldetail.innerHTML = `
-  <textarea name="cke_add-new" class="ckeditor"></textarea>
     <div class="h3 text-primary">Sản phẩm ABC</div>
     <div class="row">
         <div class="col-sm-3">
@@ -246,7 +245,6 @@ function capnhatsp(masp) {
         <input type="file" class="form-control-file">
     </div>
     <label>Mô tả</label>
-    <textarea name="cke_update" class="ckeditor"></textarea>
     `
 }
 
