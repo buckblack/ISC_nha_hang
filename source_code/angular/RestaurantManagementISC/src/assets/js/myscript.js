@@ -264,6 +264,4 @@ function doi_so_luong_gio_hang(mahd) {
   tien.innerHTML = Number(soluong.value) * Number(gia.innerHTML);
 }
 
-    
-
 
