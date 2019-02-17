@@ -11,7 +11,9 @@ import { HangHoaComponent } from './dashboard/hang-hoa/hang-hoa.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ThongKeComponent } from './dashboard/thong-ke/thong-ke.component';
 import { HoaDonComponent } from './dashboard/hoa-don/hoa-don.component';
-import { ChartModule } from 'angular-highcharts';
+import { ChartModule, HIGHCHARTS_MODULES  } from 'angular-highcharts';
+import * as exporting from 'highcharts/modules/exporting.src';
+import * as more from 'highcharts/highcharts-more.src';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ChartModule } from 'angular-highcharts';
     CKEditorModule,
     ChartModule
   ],
-  providers: [],
+  providers: [
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] } // add as factory to your providers
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
