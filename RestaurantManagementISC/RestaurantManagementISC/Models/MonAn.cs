@@ -16,7 +16,7 @@ namespace RestaurantManagementISC.Models
         public string tenmonan { get; set; }
 
         [Column("ma_dongia")]
-        public float dongia { get; set; }
+        public double dongia { get; set; }
 
         [Column("ma_hinh")]
         public string hinhanh { get; set; }

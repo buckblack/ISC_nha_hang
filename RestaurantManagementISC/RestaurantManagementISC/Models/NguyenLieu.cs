@@ -19,6 +19,6 @@ namespace RestaurantManagementISC.Models
         public string donvitinh { get; set; }
 
         [Column("nl_soluong")]
-        public float soluong { get; set; }
+        public double soluong { get; set; }
     }
 }
