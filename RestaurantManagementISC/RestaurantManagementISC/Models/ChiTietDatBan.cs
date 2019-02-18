@@ -16,7 +16,7 @@ namespace RestaurantManagementISC.Models
         public int soluong { get; set; }
 
         [Column("ctdb_dongia")]
-        public float dongia { get; set; }
+        public double dongia { get; set; }
 
         public int id_monan { get; set; }
 

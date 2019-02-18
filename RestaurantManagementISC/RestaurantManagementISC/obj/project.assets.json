@@ -12943,23 +12943,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Van Bao\\.nuget\\packages\\": {},
+    "C:\\Users\\isc\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ISC\\On-job\\Project\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
+      "projectUniqueName": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
       "projectName": "RestaurantManagementISC",
-      "projectPath": "D:\\ISC\\On-job\\Project\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
-      "packagesPath": "C:\\Users\\Van Bao\\.nuget\\packages\\",
-      "outputPath": "D:\\ISC\\On-job\\Project\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\obj\\",
+      "projectPath": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
+      "packagesPath": "C:\\Users\\isc\\.nuget\\packages\\",
+      "outputPath": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Van Bao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\isc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

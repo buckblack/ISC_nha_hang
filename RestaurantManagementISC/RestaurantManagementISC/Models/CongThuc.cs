@@ -13,7 +13,7 @@ namespace RestaurantManagementISC.Models
         public int Id { get; set; }
 
         [Column("ct_soluong")]
-        public float soluong { get; set; }
+        public double soluong { get; set; }
 
         public int id_nguyenlieu { get; set; }
 
