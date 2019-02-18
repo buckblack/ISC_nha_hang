@@ -1,5 +1,6 @@
 import { Chart } from 'angular-highcharts';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -72,8 +73,9 @@ export class ThongKeComponent implements OnInit {
       } as any
     ]
   });
-  constructor() { }
+  constructor(private titleService: Title) { }
   ngOnInit() {
+    this.titleService.setTitle('Thống kê');
   }
   // add point to chart serie
   add() {
