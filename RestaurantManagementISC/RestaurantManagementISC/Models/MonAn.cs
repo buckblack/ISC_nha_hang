@@ -22,7 +22,7 @@ namespace RestaurantManagementISC.Models
         public string hinhanh { get; set; }
 
         [Column("ma_trangthai")]
-        public bool trangthai { get; set; }
+        public string trangthai { get; set; }
 
         [Column("ma_noidung")]
         public string noidung { get; set; }
