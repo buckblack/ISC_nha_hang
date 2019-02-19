@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hang-hoa',
@@ -9,9 +10,10 @@ export class HangHoaComponent implements OnInit {
 
   cke_them = `
   `;
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Sản phẩm');
   }
 
   show(){
