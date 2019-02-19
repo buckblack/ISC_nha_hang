@@ -27,6 +27,20 @@ namespace RestaurantManagementISC.Controllers
             return await _context.NhanViens.ToListAsync();
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginRespone>> GetInfoLogin(LoginReqest lg)
+        {
+            NhanVien nv= await _context.NhanViens.FirstOrDefaultAsync(x=>x.password==lg.password && x.email==lg.email);
+            LoginRespone loginRespone = new LoginRespone();
+            if (nv != null)
+            {
+                loginRespone.id = nv.Id;
+                loginRespone.ten = nv.tennhanvien;
+                loginRespone.trangthai = nv.trangthai;
+            }
+            return loginRespone;
+        }
+
         // GET: api/NhanVien/5
         [HttpGet("{id}")]
         public async Task<ActionResult<NhanVien>> GetNhanVien(int id)

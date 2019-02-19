@@ -1,3 +1,14 @@
+$(document).ready(function () {
+  $('#alert-login').hide();
+});
+
+function click_login(){
+  window.setTimeout(function() {
+    $("#alert-login").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+  }, 4000);
+}
 function check_ghichu() {
   var kq = document.querySelectorAll('.table_ghichu')
   var check = document.getElementById('check_ghichu')
@@ -12,9 +23,6 @@ function check_ghichu() {
       }
   }
 }
-
-
-
 
 
 

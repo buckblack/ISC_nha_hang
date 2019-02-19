@@ -2,13 +2,16 @@
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Đăng nhập</h2>
+	<alert type="success" dismissOnTimeout="5000">
+		{{message}}
+	  </alert>
 		<form action="#" method="post">
-			<input type="email" class="ggg" name="Email" placeholder="Nhập email" required="">
-			<input type="password" class="ggg" name="Password" placeholder="Nhập mật khẩu" required="">
+			<input type="email" class="ggg" name="Email" placeholder="Nhập email" [(ngModel)]="email" required="">
+			<input type="password" class="ggg" name="Password" placeholder="Nhập mật khẩu" [(ngModel)]="password" required="">
 			<span><input type="checkbox" />Nhớ đăng nhập</span>
 			<h6><a href="#">Quên mật khẩu?</a></h6>
 				<div class="clearfix"></div>
-				<input type="submit" value="Sign In" name="login">
+				<input type="submit" value="Sign In" name="login" (click)="login()">
 		</form>
 </div>
 </div>
