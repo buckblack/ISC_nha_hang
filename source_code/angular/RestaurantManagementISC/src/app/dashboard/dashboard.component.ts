@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  username = localStorage.getItem('username');
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    if (this.username == null) {
+      this.router.navigate(['/login']);
+    }
+  }
+  logout() {
+    localStorage.removeItem('username');
+    this.router.navigate(['/login']);
   }
 
 }

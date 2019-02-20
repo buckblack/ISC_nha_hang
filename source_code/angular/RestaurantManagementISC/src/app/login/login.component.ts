@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Đăng nhập');
+    if (localStorage.getItem('username') != null) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   login() {
@@ -24,17 +27,18 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
     this.userService.login(this.email, this.password).subscribe(result => {
-        if (result.id === 0) {
-          this.message = "Sai tên đăng nhập hoặc mật khẩu";
+      if (result.id === 0) {
+        this.message = 'Sai tên đăng nhập hoặc mật khẩu';
+      } else {
+        if (result.trangthai === false) {
+          this.message = 'Tài khoản này đã bị khóa';
         } else {
-          if (result.trangthai === false) {
-            this.message = "Tài khoản này đã bị khóa";
-          } else {
-            this.message = '';
-            this.router.navigate(['/dashboard']);
-          }
+          this.message = '';
+          localStorage.setItem('username', result.ten);
+          this.router.navigate(['/dashboard']);
         }
-      });
+      }
+    });
   }
 
 }

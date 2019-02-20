@@ -24,12 +24,12 @@
                   <li class="dropdown mt-1">
                       <a data-toggle="dropdown" class="dropdown-toggle py-2 px-1" href="#">
                           <img alt="" src="/assets/images/2.png">
-                          <span class="username">John Doe</span>
+                          <span class="username">{{username}}</span>
                           <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu extended logout">
                           <li><a href="#"><i class=" fa fa-suitcase"></i>Tài khoản</a></li>
-                          <li><a href="/login"><i class="fa fa-key"></i>Đăng xuất</a></li>
+                          <li><a href="#" (click)="logout()"><i class="fa fa-key"></i>Đăng xuất</a></li>
                       </ul>
                   </li>
                   <!-- user login dropdown end -->
