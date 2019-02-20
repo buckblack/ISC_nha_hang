@@ -1,7 +1,7 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   message = '';
   email = '';
   password = '';
-  constructor(private titleService: Title, private http: HttpClient, private router: Router) { }
+  constructor(private titleService: Title, private userService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.titleService.setTitle('Đăng nhập');
@@ -23,12 +23,11 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     };
-    this.http.post('https://localhost:44384/api/nhanvien/login', param)
-      .subscribe(result => {
-        if (result['id'] === 0) {
+    this.userService.login(this.email, this.password).subscribe(result => {
+        if (result.id === 0) {
           this.message = "Sai tên đăng nhập hoặc mật khẩu";
         } else {
-          if (result['trangthai'] === false) {
+          if (result.trangthai === false) {
             this.message = "Tài khoản này đã bị khóa";
           } else {
             this.message = '';

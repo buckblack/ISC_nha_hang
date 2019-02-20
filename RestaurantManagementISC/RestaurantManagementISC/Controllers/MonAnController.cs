@@ -24,7 +24,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MonAn>>> GetMonAns()
         {
-            return await _context.MonAns.ToListAsync();
+            return await _context.MonAns.Include(x=>x.LoaiMonAn).ToListAsync();
         }
 
         // GET: api/MonAn/5
