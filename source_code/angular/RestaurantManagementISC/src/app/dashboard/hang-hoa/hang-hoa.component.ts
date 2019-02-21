@@ -18,7 +18,6 @@ export class HangHoaComponent implements OnInit {
     this.titleService.setTitle('Sản phẩm');
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
-      this.detail = result[0];
     });
   }
 

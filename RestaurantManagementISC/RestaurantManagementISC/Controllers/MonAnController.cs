@@ -31,7 +31,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MonAn>> GetMonAn(int id)
         {
-            var monAn = await _context.MonAns.FindAsync(id);
+            var monAn = await _context.MonAns.Include(x => x.LoaiMonAn).FirstOrDefaultAsync();
 
             if (monAn == null)
             {
