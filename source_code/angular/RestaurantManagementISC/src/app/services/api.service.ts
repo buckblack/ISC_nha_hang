@@ -7,6 +7,8 @@ export class ApiService {
   baseUrl = 'https://localhost:44384/api/';
   apiUrl = {
     login: this.baseUrl + 'nhanvien/login',
-    monan: this.baseUrl + 'monan'
+    monan: this.baseUrl + 'monan',
+    hoadon: this.baseUrl + 'hoadon',
+    chitietdatban: this.baseUrl + 'chitietdatban',
   };
 }

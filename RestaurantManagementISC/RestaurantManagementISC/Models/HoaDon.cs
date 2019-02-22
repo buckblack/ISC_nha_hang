@@ -35,5 +35,8 @@ namespace RestaurantManagementISC.Models
 
         [ForeignKey("id_khachhang")]
         public virtual KhachHang KhachHang { get; set; }
+
+        [NotMapped]
+        public double tongtien { get; set; }
     }
 }

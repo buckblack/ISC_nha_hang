@@ -53,12 +53,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-toggle="modal" data-target="#modal-detai">
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
+                                <tr *ngFor="let hoadon of hoadons" data-toggle="modal" data-target="#modal-detai" (click)="click_detail(hoadon.id)"> 
+                                    <td>{{hoadon.id}}</td>
+                                    <td>{{hoadon.khachHang.tenkhachhang}}</td>
+                                    <td>{{hoadon.nhanVien.tennhanvien}}</td>
+                                    <td>{{hoadon.ngaydat}}</td>
+                                    <td>{{hoadon.tongtien}}</td>
                                     <td class="table_ban d-none">5</td>
                                     <td class="table_ghichu d-none">1</td>
                                     <td class="table_status d-none">1</td>
@@ -121,18 +121,18 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>2</td>
+                                                        <tr *ngFor="let chitiet of detail">
+                                                            <td>{{chitiet.monAn.id}}</td>
+                                                            <td>{{chitiet.monAn.tenmonan}}</td>
+                                                            <td>{{chitiet.soluong}}</td>
                                                             <td>3</td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td>5</td>
                                                             <td>3</td>
                                                             <td>2</td>
                                                             <td>9</td>
-                                                        </tr>
+                                                        </tr> -->
 
                                                     </tbody>
                                                 </table>

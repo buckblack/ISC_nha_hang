@@ -42,7 +42,7 @@ namespace RestaurantManagementISC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
                 {
-                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
             services.AddCors(options =>
             {

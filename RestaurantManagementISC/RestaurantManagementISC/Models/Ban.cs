@@ -19,6 +19,6 @@ namespace RestaurantManagementISC.Models
         public bool trangthai { get; set; }
 
         [Column("b_hoadon_phucvu")]
-        public int hoadonphucvu { get; set; }
+        public Nullable<int> hoadonphucvu { get; set; }
     }
 }
