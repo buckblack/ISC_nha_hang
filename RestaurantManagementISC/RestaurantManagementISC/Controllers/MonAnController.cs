@@ -41,6 +41,13 @@ namespace RestaurantManagementISC.Controllers
             return monAn;
         }
 
+        //tìm
+        [HttpGet("tim")]
+        public async Task<ActionResult<IEnumerable<MonAn>>> GetTimNguyenLieu([FromQuery] string q)
+        {
+            return await _context.MonAns.Where(x => x.tenmonan.Contains(q)).ToListAsync();
+        }
+
         // PUT: api/MonAn/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMonAn(int id, MonAn monAn)

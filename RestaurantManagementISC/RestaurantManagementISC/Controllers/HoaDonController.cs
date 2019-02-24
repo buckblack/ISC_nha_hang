@@ -49,10 +49,18 @@ namespace RestaurantManagementISC.Controllers
 
             if (hoaDon == null)
             {
-                return NotFound();
+                return new HoaDon { Id = 0 };
             }
 
             return hoaDon;
+        }
+
+        // GET: tổng tiền
+        [HttpGet("tongtien/{idHD}")]
+        public async Task<ActionResult<double>> GetTongtien(int idHD)
+        {
+            var hoaDon = await _context.HoaDons.FindAsync(idHD);
+            return _context.ChiTietDatBans.Where(t => t.id_hoadon == idHD).Sum(t => t.soluong * t.dongia);
         }
 
         // PUT: api/HoaDons/5

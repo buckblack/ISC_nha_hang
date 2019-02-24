@@ -52,6 +52,10 @@ export class HangHoaService {
     return this.http.get<NguyenLieu[]>(this.api.apiUrl.timnguyenlieu + query);
   }
 
+  public TimMonan(query): Observable<MonanList> {
+    return this.http.get<MonanList>(this.api.apiUrl.timmonan + query);
+  }
+
   public XoaCongThuc(id): Observable<ThanhPhan> {
     return this.http.delete<ThanhPhan>(this.api.apiUrl.congthuc + id);
   }

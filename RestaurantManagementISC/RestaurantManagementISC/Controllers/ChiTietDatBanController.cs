@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
@@ -25,6 +26,16 @@ namespace RestaurantManagementISC.Controllers
         public async Task<ActionResult<IEnumerable<ChiTietDatBan>>> GetChiTietDatBans()
         {
             return await _context.ChiTietDatBans.Include(x => x.MonAn).Include(x => x.HoaDon).ToListAsync();
+        }
+
+        //kiểm tra đã gọi món đó chưa
+        [HttpPost("kiemtra")]
+        public async Task<ActionResult<bool>> GetKiemtraMonan(ChitietRequest chitiet)
+        {
+            var check= _context.ChiTietDatBans.Where(x => x.id_hoadon == chitiet.idHoaDon && x.id_monan == chitiet.idMonAn).FirstOrDefault();
+            if (check == null)
+                return true;
+            return false;
         }
 
         [HttpGet("HoaDon/{idHoaDon}")]
@@ -51,30 +62,13 @@ namespace RestaurantManagementISC.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChiTietDatBan(int id, ChiTietDatBan chiTietDatBan)
         {
-            if (id != chiTietDatBan.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(chiTietDatBan).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChiTietDatBanExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var ct = await _context.ChiTietDatBans.FindAsync(id);
+            if (ct == null)
+                return NotFound();
+            ct.soluong = chiTietDatBan.soluong;
+            _context.ChiTietDatBans.Update(ct);
+            await _context.SaveChangesAsync();
+            return Ok(ct);
         }
 
         // POST: api/ChiTietDatBan

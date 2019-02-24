@@ -14,5 +14,8 @@ export class ApiService {
     nguyenlieu: this.baseUrl + 'nguyenlieu/tim',
     timnguyenlieu: this.baseUrl + 'nguyenlieu/tim?q=',
     congthuc: this.baseUrl + 'congthuc/',
+    ban: this.baseUrl + 'bans',
+    timmonan: this.baseUrl + 'monan/tim?q=',
+    timhoadon_phucvu: this.baseUrl + 'bans/hoadon',
   };
 }
