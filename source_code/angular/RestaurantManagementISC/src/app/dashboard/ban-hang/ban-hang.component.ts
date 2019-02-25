@@ -15,12 +15,13 @@ import { log } from 'util';
 export class BanHangComponent implements OnInit {
   bans: BanList;
   monans: MonanList;
-  ip_tim_monan = ''
+  ip_tim_monan = '';
   id_hoadon = '';
   soban: number;
   id_ban: number;
   tongtienHD = 0;
   chitietHDs: ChiTietHoaDonInfo;
+
   constructor(private titleService: Title, private banService: BanService, private monanService: HangHoaService, private banhangService: BanHangService, private hoadonService: HoaDonService) { }
 
   ngOnInit() {

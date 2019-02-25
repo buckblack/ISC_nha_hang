@@ -80,6 +80,13 @@ namespace RestaurantManagementISC.Controllers
 
         // POST: api/MonAn
         [HttpPost]
+        //public async Task<ActionResult<MonAn>> PostMonAn(MonAn monAn)
+        //{
+        //    _context.MonAns.Add(monAn);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
+        //}
         public async Task<ActionResult<MonAn>> PostMonAn(MonAn monAn)
         {
             _context.MonAns.Add(monAn);
@@ -87,7 +94,6 @@ namespace RestaurantManagementISC.Controllers
 
             return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
         }
-
         // DELETE: api/MonAn/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<MonAn>> DeleteMonAn(int id)

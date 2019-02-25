@@ -1,7 +1,8 @@
-import { MonanList, MonanInfo, ThanhPhan, NguyenLieu } from './../../services/hang-hoa.service';
+import { MonanList, MonanInfo, ThanhPhan, NguyenLieu, ListLoaimonanInfo } from './../../services/hang-hoa.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HangHoaService } from 'src/app/services/hang-hoa.service';
+import { LoaimonanInfo } from 'src/app/services/hoa-don.service';
 
 
 @Component({
@@ -19,12 +20,15 @@ export class HangHoaComponent implements OnInit {
   sanphams: MonanList;
   thanhphans: ThanhPhan;
   nguyenlieus: NguyenLieu[];
+  hangHoaMoi: MonanInfo ={} as MonanInfo; //Hàng hóa để thêm mới
+  loaiHHs: ListLoaimonanInfo; //list id mã hàng hóa
   constructor(private titleService: Title, private monanService: HangHoaService) { }
   ngOnInit() {
     this.titleService.setTitle('Sản phẩm');
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
     });
+
   }
 
   tp_uptodown() {
@@ -74,7 +78,35 @@ export class HangHoaComponent implements OnInit {
     });
   }
 
+  themHangHoa(){
+    //console.log(this.hangHoaMoi);
+    const param = {
+      tenmonan: this.hangHoaMoi.tenmonan,
+      dongia: this.hangHoaMoi.dongia,
+      hinhanh: this.hangHoaMoi.hinhanh,
+      trangthai: this.hangHoaMoi.trangthai,
+      noidung: this.cke_them,
+      id_loaimonan: this.hangHoaMoi.id_loaimonan
+    };
+    this.monanService.ThemHangHoa(param).subscribe(result => {
+
+    });
+    //console.log(param);
+  }
+
   show() {
     console.log(this.cke_them);
+
   }
+
+  handleUpload(event){
+    this.hangHoaMoi.hinhanh = event.target.files[0].name;
+   }
+
+   getAllHangHoa(){
+    this.monanService.getAllLoaiHangHoa().subscribe(result => {
+      this.loaiHHs = result;
+      console.log(this.loaiHHs.loaimonan)
+    });
+   }
 }
