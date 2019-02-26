@@ -48,8 +48,8 @@
                                     <th>Ngày</th>
                                     <th>Tổng tiền</th>
                                     <th class="table_ban d-none">Bàn</th>
-                                    <th class="table_ghichu d-none">Ghi chú</th>
                                     <th class="table_status d-none">Trạng thái</th>
+                                    <th class="table_ghichu d-none">Ghi chú</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,8 +60,8 @@
                                     <td>{{hoadon.ngaydat}}</td>
                                     <td>{{(hoadon.tongtien).toLocaleString('en-GB')}}</td>
                                     <td class="table_ban d-none">{{hoadon.ban.id}}</td>
-                                    <td class="table_ghichu d-none">{{hoadon.ghichu}}</td>
                                     <td class="table_status d-none">{{hoadon.trangthai === true ? 'đã thanh toán' : 'chưa thanh toán'}}</td>
+                                    <td class="table_ghichu d-none">{{hoadon.ghichu}}</td>
                                 </tr>
                             </tbody>
                         </table>

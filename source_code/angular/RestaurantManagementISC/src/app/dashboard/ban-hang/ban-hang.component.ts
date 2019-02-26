@@ -59,6 +59,11 @@ export class BanHangComponent implements OnInit {
     });
   }
   chon_mon(id, gia) {
+    if (this.id_hoadon === undefined || this.id_hoadon === '') {
+      alert('Chưa chọn bàn');
+      return;
+    }
+
     const param = {
       idHoaDon: this.id_hoadon,
       idMonAn: id
@@ -91,6 +96,16 @@ export class BanHangComponent implements OnInit {
             id_hoadon: this.id_hoadon,
           };
           this.banhangService.ThemChiTiet(ct).subscribe(kq => {
+            this.loadChitiet();
+            const ban = document.getElementById('ban_' + this.id_ban);
+            ban.setAttribute('src', '/assets/images/chair2.png');
+          });
+        } else {
+          const ct = {
+            id_monan: id,
+            id_hoadon: this.id_hoadon,
+          };
+          this.banhangService.ThemChiTietDaCo(ct).subscribe(kq => {
             this.loadChitiet();
             const ban = document.getElementById('ban_' + this.id_ban);
             ban.setAttribute('src', '/assets/images/chair2.png');

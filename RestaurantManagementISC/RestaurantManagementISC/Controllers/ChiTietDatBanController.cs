@@ -71,10 +71,10 @@ namespace RestaurantManagementISC.Controllers
             return Ok(ct);
         }
 
-        [HttpPut("daco/{id}")]
-        public async Task<IActionResult> PutChiTietDatBanDaCo(int id)
+        [HttpPut("daco")]
+        public async Task<IActionResult> PutChiTietDatBanDaCo(ChiTietDatBan chiTiet)
         {
-            var ct = await _context.ChiTietDatBans.FindAsync(id);
+            var ct = await _context.ChiTietDatBans.Where(x=>x.id_hoadon==chiTiet.id_hoadon && x.id_monan==chiTiet.id_monan).FirstOrDefaultAsync();
             if (ct == null)
                 return NotFound();
             ct.soluong++;
