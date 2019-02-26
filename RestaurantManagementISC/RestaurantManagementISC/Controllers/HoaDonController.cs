@@ -45,13 +45,13 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<HoaDon>> GetHoaDon(int id)
         {
-            var hoaDon = await _context.HoaDons.FindAsync(id);
+            var hoaDon = await _context.HoaDons.Where(x => x.Id == id).Include(x => x.KhachHang).Include(x => x.NhanVien).FirstOrDefaultAsync();
 
             if (hoaDon == null)
             {
                 return new HoaDon { Id = 0 };
             }
-
+            
             return hoaDon;
         }
 
