@@ -59,9 +59,9 @@
                                     <td>{{hoadon.nhanVien.tennhanvien}}</td>
                                     <td>{{hoadon.ngaydat}}</td>
                                     <td>{{(hoadon.tongtien).toLocaleString('en-GB')}}</td>
-                                    <td class="table_ban d-none">5</td>
-                                    <td class="table_ghichu d-none">1</td>
-                                    <td class="table_status d-none">1</td>
+                                    <td class="table_ban d-none">{{hoadon.ban.id}}</td>
+                                    <td class="table_ghichu d-none">{{hoadon.ghichu}}</td>
+                                    <td class="table_status d-none">{{hoadon.trangthai === true ? 'đã thanh toán' : 'chưa thanh toán'}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -95,16 +95,16 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row w-100">
-                                            <div class="h3 text-primary mr-auto">Hóa đơn 123</div>
-                                            <div class="h3 text-danger">Tổng tiền:288,000 VNĐ</div>
+                                            <div class="h3 text-primary mr-auto" *ngIf="hoadonIf!==undefined">Hóa đơn {{hoadonIf.id}}</div>
+                                            <div class="h3 text-danger">Tổng tiền:{{(tongtienHD).toLocaleString('en-GB')}} VNĐ</div>
                                         </div>
                                         <div class="row w-100">
-                                                <div class="h6 mr-auto">Người lập: NVA</div>
-                                                <div class="h6">Ngày lập: 1-1-2019</div>
+                                                <div class="h6 mr-auto" *ngIf="hoadonIf!==undefined">Người lập: {{(hoadonIf.nhanVien.honhanvien) + ' ' + (hoadonIf.nhanVien.tennhanvien)}}</div>
+                                                <div class="h6" *ngIf="hoadonIf!==undefined">Ngày lập: {{hoadonIf.ngaydat}}</div>
                                             </div>
                                         <div class="row w-100">
                                                 <div class="h6 mr-auto">Khách hàng: Khách lẻ</div>
-                                                <div class="h6">Tình trạng:Đã thanh toán</div>
+                                                <div class="h6" *ngIf="hoadonIf!==undefined">Tình trạng:{{hoadonIf.tinhtrang === true ? 'đã thanh toán' : 'chưa thanh toán'}}</div>
                                             </div>
                                         <div class="row">
                                             <div class="col-sm-12">
