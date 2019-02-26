@@ -101,10 +101,6 @@ export class HangHoaComponent implements OnInit {
 
   }
 
-  show() {
-    console.log(this.cke_them);
-
-  }
 
   handleUpload(event) {
     this.hangHoaMoi.hinhanh = event.target.files[0].name;

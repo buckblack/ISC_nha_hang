@@ -11,7 +11,7 @@
                                             href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">PHÒNG
                                             BÀN</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" id="thucdon">
                                         <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
                                             role="tab" aria-controls="pills-profile" aria-selected="false">THỰC ĐƠN</a>
                                     </li>
@@ -39,7 +39,7 @@
                                               </nav>
                                         <div class="phong-ban p-2 width-auto">
                                             <div class="row m-0">
-                                                <div *ngFor="let ban of bans" class="card text-center border-0 bg-light px-4" style="width: 100px;" (click)="chon_ban(ban.id,ban.soban)">
+                                                <div data-toggle="tab" href="#pills-profile" *ngFor="let ban of bans" id="maban_{{ban.id}}" class="card text-center border-0 bg-light px-4" style="width: 100px;" (click)="chon_ban(ban.id,ban.soban)">
                                                     <ng-container *ngIf="ban.hoadonphucvu==undefine; then thenTemplate; else elseTemplate"></ng-container>
                                                     <ng-template #thenTemplate>
                                                         <img class="card-img-top px-3" src="/assets/images/chair.png" alt="Card image cap"  id="ban_{{ban.id}}">
@@ -95,7 +95,7 @@
                                 </ul>
                             </section>
                             <section class="p-2">
-                                <button class="btn btn-control disabled"><i class="fa fa-street-view"></i><a href="#">Bàn {{soban}} / Lầu 1</a></button>
+                                <button class="btn btn-control disabled"><i class="fa fa-street-view" *ngIf="expression"></i><a href="#">Bàn {{soban}} / Lầu 1</a></button>
                                 <table class="table table-hover table-striped table-responsive d-lg-table">
                                     <tbody id="ds_mon">
                                         <tr *ngFor="let row of chitietHDs; let i=index" id="tr_gio_hang_1">

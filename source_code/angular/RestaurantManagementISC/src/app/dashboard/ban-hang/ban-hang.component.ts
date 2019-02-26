@@ -49,6 +49,9 @@ export class BanHangComponent implements OnInit {
       this.id_hoadon = result.toString();
       this.loadChitiet();
     });
+    document.getElementById('pills-home-tab').classList.remove('active');
+    document.getElementById('pills-profile-tab').classList.add('active');
+    document.getElementById('maban_' + id).classList.remove('active');
   }
   tim_monan() {
     this.monanService.TimMonan(this.ip_tim_monan).subscribe(result => {
