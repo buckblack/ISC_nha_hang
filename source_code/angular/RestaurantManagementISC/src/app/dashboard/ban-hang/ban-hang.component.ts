@@ -33,18 +33,21 @@ export class BanHangComponent implements OnInit {
       this.monans = result;
     });
   }
+  loadChitiet() {
+    this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result => {
+      this.chitietHDs = result;
+    });
+    this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result => {
+      this.tongtienHD = Number(result);
+    });
+  }
 
   chon_ban(id, soban) {
     this.soban = soban;
     this.id_ban = id;
     this.banhangService.getIdHoadon(id).subscribe(result => {
       this.id_hoadon = result.toString();
-      this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result2 => {
-        this.chitietHDs = result2;
-      });
-      this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result3 => {
-        this.tongtienHD = Number(result3);
-      });
+      this.loadChitiet();
     });
   }
   tim_monan() {
@@ -85,12 +88,7 @@ export class BanHangComponent implements OnInit {
             id_hoadon: this.id_hoadon,
           };
           this.banhangService.ThemChiTiet(ct).subscribe(kq => {
-            this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result_ct => {
-              this.chitietHDs = result_ct;
-            });
-            this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result_tongtien => {
-              this.tongtienHD = Number(result_tongtien);
-            });
+            this.loadChitiet();
             const ban = document.getElementById('ban_' + this.id_ban);
             ban.setAttribute('src', '/assets/images/chair2.png');
           });
@@ -123,12 +121,7 @@ export class BanHangComponent implements OnInit {
 
   xoa_chi_tiet(id_chitiet) {
     this.hoadonService.deleteChitiet(id_chitiet).subscribe(kq => {
-      this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result2 => {
-        this.chitietHDs = result2;
-      });
-      this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result3 => {
-        this.tongtienHD = Number(result3);
-      });
+      this.loadChitiet()
     });
 
   }
@@ -139,12 +132,7 @@ export class BanHangComponent implements OnInit {
       soluong: sl,
     };
     this.banhangService.UpdateSoluong(id_chitiet, data).subscribe(kq => {
-      this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result2 => {
-        this.chitietHDs = result2;
-      });
-      this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result3 => {
-        this.tongtienHD = Number(result3);
-      });
+      this.loadChitiet();
     });
   }
 }

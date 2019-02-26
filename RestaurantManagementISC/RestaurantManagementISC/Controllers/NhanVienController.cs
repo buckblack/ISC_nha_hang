@@ -28,7 +28,7 @@ namespace RestaurantManagementISC.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<LoginRespone>> GetInfoLogin(LoginReqest lg)
+        public async Task<ActionResult<LoginRespone>> GetInfoLogin(LoginRequest lg)
         {
             NhanVien nv= await _context.NhanViens.FirstOrDefaultAsync(x=>x.password==lg.password && x.email==lg.email);
             LoginRespone loginRespone = new LoginRespone();

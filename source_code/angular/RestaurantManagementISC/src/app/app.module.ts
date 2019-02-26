@@ -15,6 +15,7 @@ import { HoaDonComponent } from './dashboard/hoa-don/hoa-don.component';
 import { ChartModule, HIGHCHARTS_MODULES  } from 'angular-highcharts';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as more from 'highcharts/highcharts-more.src';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import * as more from 'highcharts/highcharts-more.src';
     FormsModule,
     HttpClientModule,
     CKEditorModule,
-    ChartModule
+    ChartModule,
+    ModalModule.forRoot()
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] } // add as factory to your providers
