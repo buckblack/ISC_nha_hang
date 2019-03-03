@@ -91,17 +91,17 @@
         </nav>
 
         <!-- modal chi tiết -->
-        <div class="modal fade" id="modal-detai" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div bsModal #modalDetail="bs-modal" class="modal fade" id="modal-detai" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
           <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Chi tiết sản phẩm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" class="close" (click)="modalDetail.hide()"> 
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <div class="h3 text-primary">Sản phẩm ABC</div>
+                <div class="h3 text-primary" *ngIf="detail!=null">Sản phẩm {{detail.tenmonan}}</div>
                 <div class="row">
                   <div class="col-sm-3">
                     <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
@@ -160,8 +160,7 @@
                         Cập nhật</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn btn-danger btn-lg mx-2 mt-2" href="#"><i class="fa fa-lock"></i> Ngừng
-                        kinh doanh</a>
+                      <a class="nav-link btn btn-danger btn-lg mx-2 mt-2" id="btn-tinhtrang" href="#" (click)="updateTrangThai($event, detail.id)" *ngIf="detail!=null"><i class="fa fa-lock"></i> {{(detail.trangthai === 'đang kinh doanh' ? 'Ngừng kinh doanh' : 'Kinh doanh')}}</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link btn btn-primary btn-lg mx-2 mt-2" href="#"><i class=" fa fa-trash-o"></i> Xóa</a>
@@ -173,7 +172,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal" id="btn_cong_thuc" data-toggle="modal"
                   data-target="#modal-thanhphan" (click)="getThanhphan(tp_idmonan)">Thành phần</button>
-                <button type="button" class="btn btn-secondary" id="btn_close_detai" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-secondary" id="btn_close_detai" data-dismiss="modal" class="close">Đóng</button>
 
               </div>
             </div>

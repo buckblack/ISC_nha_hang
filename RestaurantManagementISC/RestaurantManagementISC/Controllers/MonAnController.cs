@@ -49,6 +49,21 @@ namespace RestaurantManagementISC.Controllers
             return await _context.MonAns.Where(x => x.tenmonan.Contains(q)).ToListAsync();
         }
 
+
+        //Put: api/MonAn/TinhTrang/5
+        [HttpPut("tinhtrang/{idMon}")]
+        public async Task<IActionResult> PutTinhTrangMonAn (MonAn monAn, int idMon)
+        {
+            var a = await _context.MonAns.FindAsync(idMon);
+            if (a == null)
+            {
+                return NotFound();
+            }
+            a.trangthai = monAn.trangthai;
+            _context.MonAns.Update(a);
+            await _context.SaveChangesAsync();
+            return Ok(a);
+        }
         // PUT: api/MonAn/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMonAn(int id, MonAn monAn)

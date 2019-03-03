@@ -77,4 +77,8 @@ export class HangHoaService {
   public getAllLoaiHangHoa(): Observable<ListLoaimonanInfo> {
     return this.http.get<ListLoaimonanInfo>(this.api.apiUrl.loaimonan);
   }
+
+  public updateTinhTrangMonAn(param, id): Observable<MonanInfo> {
+    return this.http.put<MonanInfo>(this.api.apiUrl.tinhtrangmonan + '/' + id, param);
+  }
 }

@@ -23,16 +23,21 @@ export class HangHoaComponent implements OnInit {
   nguyenlieus: NguyenLieu[];
   hangHoaMoi: MonanInfo = {} as MonanInfo; //Hàng hóa để thêm mới
   loaiHHs: ListLoaimonanInfo; //list id mã hàng hóa
+  id_monan: number;
+  trangthai: string;
   @ViewChild('modalAddNew') modalAddNew: ModalDirective;
+  @ViewChild('modalDetail') modalDetail: ModalDirective;
   constructor(private titleService: Title, private monanService: HangHoaService) { }
   ngOnInit() {
     this.titleService.setTitle('Sản phẩm');
+    this.loadData();
+
+  }
+  loadData() {
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
     });
-
   }
-
   tp_uptodown() {
     if (this.sl_tp_up === undefined) {
       alert("Chưa chọn nguyên liệu");
@@ -111,6 +116,38 @@ export class HangHoaComponent implements OnInit {
     this.monanService.getAllLoaiHangHoa().subscribe(result => {
       this.loaiHHs = result;
       console.log(this.loaiHHs);
+    });
+  }
+
+  updateTrangThai(event, id) {
+    event.preventDefault();
+    this.monanService.getMonAn(id).subscribe(res => {
+      this.id_monan = res.id;
+      this.trangthai = res.trangthai;
+      console.log(this.id_monan);
+      if (this.trangthai === 'đang kinh doanh') {
+      const param = {
+        trangthai: 'ngừng kinh doanh',
+      };
+      this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(result => {
+        console.log(result);
+        document.getElementById('btn-tinhtrang').classList.remove('btn btn-danger');
+        document.getElementById('btn-tinhtrang').classList.add('btn btn-success');
+        this.modalDetail.hide();
+        this.loadData();
+      });
+    } else {
+      const param = {
+        trangthai: 'đang kinh doanh'
+      };
+      this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(res => {
+        console.log(res);
+        document.getElementById('btn-tinhtrang').classList.remove('btn btn-success');
+        document.getElementById('btn-tinhtrang').classList.add('btn btn-danger');
+        this.modalDetail.hide();
+        this.loadData();
+      });
+    }
     });
   }
 }
