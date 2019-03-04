@@ -51,7 +51,7 @@
             <tr *ngFor="let sanpham of sanphams; let i=index" (click)="modalDetail.show()"
               (click)="click_detail(sanpham.id)">
               <td>{{i+1}}</td>
-              <td class="table_hinh d-none"><img src="/assets/images/sanpham/{{sanpham.hinhanh}}" style="width: 100px;"
+              <td class="table_hinh d-none"><img src="{{sanpham.hinhanh}}" style="width: 100px;"
                   alt=""></td>
               <td class="table_masp d-none">{{sanpham.id}}</td>
               <td>{{sanpham.tenmonan}}</td>
@@ -60,7 +60,7 @@
               <td class="table_status d-none">{{sanpham.trangthai}}</td>
             </tr>
 
-            <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(456,'/assets/images/sanpham/banhcanhcua.jpg')">
+            <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(456,'banhcanhcua.jpg')">
                                     <td class="table_hinh d-none">1</td>
                                     <td>2</td>
                                     <td>4</td>
@@ -104,7 +104,7 @@
                 <div class="h3 text-primary" *ngIf="detail!=null">Sản phẩm {{detail.tenmonan}}</div>
                 <div class="row">
                   <div class="col-sm-3">
-                    <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
+                    <img *ngIf="detail!=null" src="{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
                       data-target="#modal-loadhinh">
                   </div>
                   <div class="col-sm-4">
@@ -170,7 +170,7 @@
                       
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn btn-primary btn-lg mx-2 mt-2" href="#" (click)="deleteHangHoa($event, detail.id)"><i class=" fa fa-trash-o"></i> Xóa</a>
+                      <a class="nav-link btn btn-warning btn-lg mx-2 mt-2" href="#" (click)="deleteHangHoa_confirm($event)"><i class=" fa fa-trash-o"></i> Xóa</a>
                     </li>
                   </ul>
                 </div>
@@ -185,7 +185,23 @@
             </div>
           </div>
         </div>
-
+        <!--Madal xác nhận xóa-->
+        <div bsModal #modalcomfirm="bs-modal" class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xóa</h5>
+                  <button type="button" class="close" (click)="modalcomfirm.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modalcomfirm.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deleteHangHoa(detail.id)">Xác nhận</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- modal thêm mới -->
         <div bsModal #modalAddNew="bs-modal" class="modal fade" id="modal-add-new"  tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -349,7 +365,7 @@
           <div class="modal-dialog modal-dialog-centered modal-full" role="document">
             <div class="modal-content">
               <div class="modal-body">
-                <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="w-100">
+                <img *ngIf="detail!=null" src="{{detail.hinhanh}}" class="w-100">
               </div>
             </div>
           </div>

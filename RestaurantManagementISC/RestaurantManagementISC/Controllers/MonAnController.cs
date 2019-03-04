@@ -25,20 +25,29 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MonAn>>> GetMonAns()
         {
-            return await _context.MonAns.Where(x => x.trangthai != "xóa").Include(x=>x.LoaiMonAn).ToListAsync();
+            return await _context.MonAns.Where(x => x.trangthai != "xóa").Select(x => new MonAn {
+                Id = x.Id,
+                hinhanh = Models.Ultis.Helper.getUrl(Request) + x.hinhanh,
+                dongia=x.dongia,
+                tenmonan=x.tenmonan,
+                noidung=x.noidung,
+                trangthai=x.trangthai,
+                LoaiMonAn=x.LoaiMonAn,
+                id_loaimonan=x.id_loaimonan,
+            }).ToListAsync();
         }
 
         // GET: api/MonAn/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MonAn>> GetMonAn(int id)
         {
-            var monAn = await _context.MonAns.Where(x=>x.Id==id).Include(x => x.LoaiMonAn).FirstOrDefaultAsync();
+            var monAn = await _context.MonAns.Where(x=>x.Id==id).Include(x => x.LoaiMonAn).AsNoTracking().FirstOrDefaultAsync();
 
             if (monAn == null)
             {
                 return NotFound();
             }
-
+            monAn.hinhanh = Models.Ultis.Helper.getUrl(Request) + monAn.hinhanh;
             return monAn;
         }
 

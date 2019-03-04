@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -26,6 +27,9 @@ namespace RestaurantManagementISC.Models
 
         [Column("ma_noidung")]
         public string noidung { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; }
 
         public int id_loaimonan { get; set; }
 

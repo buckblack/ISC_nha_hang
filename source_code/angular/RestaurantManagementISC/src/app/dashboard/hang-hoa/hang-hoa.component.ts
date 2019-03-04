@@ -27,6 +27,7 @@ export class HangHoaComponent implements OnInit {
   trangthai: string;
   @ViewChild('modalAddNew') modalAddNew: ModalDirective;
   @ViewChild('modalDetail') modalDetail: ModalDirective;
+  @ViewChild('modalcomfirm') modalcomfirm: ModalDirective;
   constructor(private titleService: Title, private monanService: HangHoaService) { }
   ngOnInit() {
     this.titleService.setTitle('Sản phẩm');
@@ -126,47 +127,51 @@ export class HangHoaComponent implements OnInit {
       this.trangthai = res.trangthai;
       console.log(this.id_monan);
       if (this.trangthai === 'đang kinh doanh') {
-      const param = {
-        trangthai: 'ngừng kinh doanh',
-      };
-      this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(result => {
-        console.log(result);
-        if (document.getElementById('btn-tinhtrang').classList.contains('btn-danger')) {
-          document.getElementById('btn-tinhtrang').classList.remove('btn-danger');
-        }
-        document.getElementById('btn-tinhtrang').classList.add('btn-success');
-        
-      });
-    } else {
-      const param = {
-        trangthai: 'đang kinh doanh'
-      };
-      this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(res => {
-        console.log(res);
-        if (document.getElementById('btn-tinhtrang').classList.contains('btn-success')) {
-          document.getElementById('btn-tinhtrang').classList.remove('btn-success');
-        }
-        document.getElementById('btn-tinhtrang').classList.add('btn-danger');
-        
-      });
-    }
+        const param = {
+          trangthai: 'ngừng kinh doanh',
+        };
+        this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(result => {
+          console.log(result);
+          if (document.getElementById('btn-tinhtrang').classList.contains('btn-danger')) {
+            document.getElementById('btn-tinhtrang').classList.remove('btn-danger');
+          }
+          document.getElementById('btn-tinhtrang').classList.add('btn-success');
+
+        });
+      } else {
+        const param = {
+          trangthai: 'đang kinh doanh'
+        };
+        this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(res => {
+          console.log(res);
+          if (document.getElementById('btn-tinhtrang').classList.contains('btn-success')) {
+            document.getElementById('btn-tinhtrang').classList.remove('btn-success');
+          }
+          document.getElementById('btn-tinhtrang').classList.add('btn-danger');
+
+        });
+      }
     });
     this.modalDetail.hide();
     this.loadData();
   }
-  deleteHangHoa(event, id) {
+  deleteHangHoa_confirm(event) {
     event.preventDefault();
+    this.modalDetail.hide();
+    this.modalcomfirm.show();
+  }
+
+  deleteHangHoa(id) {
     this.monanService.getMonAn(id).subscribe(res1 => {
       this.id_monan = res1.id;
       this.trangthai = res1.trangthai;
       const param = {
-        trangthai: "xóa"
+        trangthai: 'xóa'
       };
       this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(kq => {
-
+        this.loadData();
       });
     });
-    this.modalDetail.hide();
-    this.loadData();
+    this.modalcomfirm.hide();
   }
 }
