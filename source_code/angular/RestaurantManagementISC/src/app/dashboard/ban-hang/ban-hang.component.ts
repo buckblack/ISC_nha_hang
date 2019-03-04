@@ -38,6 +38,8 @@ export class BanHangComponent implements OnInit {
   loadChitiet() {
     this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result => {
       this.chitietHDs = result;
+      console.log(result);
+      
     });
     this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result => {
       this.tongtienHD = Number(result);
@@ -141,9 +143,16 @@ export class BanHangComponent implements OnInit {
     const data = {
       soluong: sl,
     };
-    this.banhangService.UpdateSoluong(id_chitiet, data).subscribe(kq => {
-      this.loadChitiet();
+    const param = {
+      trangthai: false,
+      id_nhanvien: localStorage.getItem('userid').toString(),
+    };
+    this.hoadonService.updateThanhToan(this.id_hoadon, param).subscribe(kq1=>{
+      this.banhangService.UpdateSoluong(id_chitiet, data).subscribe(kq => {
+        this.loadChitiet();
+      });
     });
+    
   }
   printHD() {
     const ghi_chu = (<HTMLInputElement>document.getElementById('ghi_chu')).value;
@@ -188,9 +197,9 @@ export class BanHangComponent implements OnInit {
       ban.setAttribute('src', '/assets/images/chair.png');
       document.getElementById('btn_daphucvu').classList.add('disabled');
       document.getElementById('btn_thanhtoan').classList.add('disabled');
+      this.id_hoadon = null;
       this.modalphucvu.hide();
     });
-
   }
   showThanhtoan() {
     if ((document.getElementById('btn_thanhtoan').classList.contains('disabled'))) {

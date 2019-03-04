@@ -87,7 +87,6 @@ export class HangHoaComponent implements OnInit {
   }
 
   themHangHoa() {
-    //console.log(this.hangHoaMoi);
     const formData: FormData = new FormData();
     formData.append('tenmonan', this.hangHoaMoi.tenmonan);
     formData.append('dongia', this.hangHoaMoi.dongia.toString());
