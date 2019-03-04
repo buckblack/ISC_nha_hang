@@ -131,10 +131,11 @@ export class HangHoaComponent implements OnInit {
       };
       this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(result => {
         console.log(result);
-        document.getElementById('btn-tinhtrang').classList.remove('btn btn-danger');
-        document.getElementById('btn-tinhtrang').classList.add('btn btn-success');
-        this.modalDetail.hide();
-        this.loadData();
+        if (document.getElementById('btn-tinhtrang').classList.contains('btn-danger')) {
+          document.getElementById('btn-tinhtrang').classList.remove('btn-danger');
+        }
+        document.getElementById('btn-tinhtrang').classList.add('btn-success');
+        
       });
     } else {
       const param = {
@@ -142,12 +143,30 @@ export class HangHoaComponent implements OnInit {
       };
       this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(res => {
         console.log(res);
-        document.getElementById('btn-tinhtrang').classList.remove('btn btn-success');
-        document.getElementById('btn-tinhtrang').classList.add('btn btn-danger');
-        this.modalDetail.hide();
-        this.loadData();
+        if (document.getElementById('btn-tinhtrang').classList.contains('btn-success')) {
+          document.getElementById('btn-tinhtrang').classList.remove('btn-success');
+        }
+        document.getElementById('btn-tinhtrang').classList.add('btn-danger');
+        
       });
     }
     });
+    this.modalDetail.hide();
+    this.loadData();
+  }
+  deleteHangHoa(event, id) {
+    event.preventDefault();
+    this.monanService.getMonAn(id).subscribe(res1 => {
+      this.id_monan = res1.id;
+      this.trangthai = res1.trangthai;
+      const param = {
+        trangthai: "xóa"
+      };
+      this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(kq => {
+
+      });
+    });
+    this.modalDetail.hide();
+    this.loadData();
   }
 }
