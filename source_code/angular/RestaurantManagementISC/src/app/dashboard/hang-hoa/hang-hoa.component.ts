@@ -88,15 +88,15 @@ export class HangHoaComponent implements OnInit {
 
   themHangHoa() {
     //console.log(this.hangHoaMoi);
-    const param = {
-      tenmonan: this.hangHoaMoi.tenmonan,
-      dongia: this.hangHoaMoi.dongia,
-      hinhanh: this.hangHoaMoi.hinhanh,
-      trangthai: this.hangHoaMoi.trangthai,
-      noidung: this.cke_them,
-      id_loaimonan: this.hangHoaMoi.id_loaimonan
-    };
-    this.monanService.ThemHangHoa(param).subscribe(result => {
+    const formData: FormData = new FormData();
+    formData.append('tenmonan', this.hangHoaMoi.tenmonan);
+    formData.append('dongia', this.hangHoaMoi.dongia.toString());
+    formData.append('file', this.hangHoaMoi.hinhanh);
+    formData.append('trangthai', this.hangHoaMoi.trangthai);
+    formData.append('noidung', this.cke_them);
+    formData.append('id_loaimonan', this.hangHoaMoi.id_loaimonan.toString());
+
+    this.monanService.ThemHangHoa(formData).subscribe(result => {
       if (result['errorCode'] === 1) {
         alert('Lỗi');
         return;
@@ -109,14 +109,13 @@ export class HangHoaComponent implements OnInit {
 
 
   handleUpload(event) {
-    this.hangHoaMoi.hinhanh = event.target.files[0].name;
+    this.hangHoaMoi.hinhanh = event.target.files[0];
   }
 
   getAllHangHoa() {
     this.modalAddNew.show();
     this.monanService.getAllLoaiHangHoa().subscribe(result => {
       this.loaiHHs = result;
-      console.log(this.loaiHHs);
     });
   }
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,11 @@ namespace RestaurantManagementISC.Controllers
     public class MonAnController : ControllerBase
     {
         private readonly RestaurantContext _context;
-
-        public MonAnController(RestaurantContext context)
+        private readonly HostingEnvironment _hostingEnvironment;
+        public MonAnController(RestaurantContext context,HostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: api/MonAn
@@ -112,13 +115,28 @@ namespace RestaurantManagementISC.Controllers
 
         //    return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
         //}
-        public async Task<ActionResult<BaseRespone>> PostMonAn(MonAn monAn)
+        public async Task<ActionResult<BaseRespone>> PostMonAn([FromForm]MonAn monAn)
         {
             try
             {
+                var file = monAn.File;
                 _context.MonAns.Add(monAn);
                 await _context.SaveChangesAsync();
-                return new BaseRespone(monAn);
+
+                if (file != null)
+                {
+                    string newFileName = monAn.Id + "_" + file.FileName;
+                    string path = _hostingEnvironment.WebRootPath + "\\Data\\sanpham\\" + newFileName;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                        monAn.hinhanh = newFileName;
+                        _context.Entry(monAn).Property(x => x.hinhanh).IsModified = true;
+                        _context.SaveChanges();
+                    }
+                }
+                return new BaseRespone(CreatedAtAction("Get", new { id = monAn.Id }, monAn));
             }
             catch
             {
