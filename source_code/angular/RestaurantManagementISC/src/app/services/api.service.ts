@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://localhost:44384/api/';
+  baseUrl = 'https://localhost:44306/api/';
   apiUrl = {
     login: this.baseUrl + 'nhanvien/login',
     monan: this.baseUrl + 'monan',
@@ -19,6 +19,6 @@ export class ApiService {
     ban: this.baseUrl + 'bans',
     timmonan: this.baseUrl + 'monan/tim?q=',
     timhoadon_phucvu: this.baseUrl + 'bans/hoadon',
-    tinhtrangmonan: this.baseUrl + 'monan/tinhtrang'
+    tinhtrangmonan: this.baseUrl + 'monan/tinhtrang',
   };
 }

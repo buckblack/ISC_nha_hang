@@ -81,4 +81,8 @@ export class HangHoaService {
   public updateTinhTrangMonAn(param, id): Observable<MonanInfo> {
     return this.http.put<MonanInfo>(this.api.apiUrl.tinhtrangmonan + '/' + id, param);
   }
+
+  public CapNhatHangHoa(param, id: number): Observable<MonanInfo> {
+    return this.http.put<MonanInfo>(this.api.apiUrl.monan + '/' + id, param);
+  }
 }
