@@ -76,45 +76,65 @@ namespace RestaurantManagementISC.Controllers
             await _context.SaveChangesAsync();
             return Ok(a);
         }
+
         // PUT: api/MonAn/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMonAn(int id, MonAn monAn)
+        public async Task<ActionResult<BaseRespone>> PutMonAn(int id ,[FromForm] MonAnRequest monAn)
         {
-            if (id != monAn.Id)
+            //lấy dữ liệu cũ của món ăn
+            var monan = await _context.MonAns.FindAsync(id);
+
+            if (monan == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(monAn).State = EntityState.Modified;
-
-            try
+            if (monAn.File != null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MonAnExists(id))
+                var uploadFilesPath = Path.Combine(_hostingEnvironment.WebRootPath, "Data\\sanpham");
+
+                if (!Directory.Exists(uploadFilesPath))
                 {
-                    return NotFound();
+                    Directory.CreateDirectory(uploadFilesPath);
                 }
-                else
+                //lấy đường dẫn file cũ
+                string oldImageName = _hostingEnvironment.WebRootPath + "\\Data\\sanpham\\" + monan.hinhanh;
+
+                string newFileName = id + "_" + monAn.File.FileName;
+                //lấy đường dẫn file mới
+                string path = _hostingEnvironment.WebRootPath + "\\Data\\sanpham\\" + newFileName;
+
+                if (monan.hinhanh != "" || monan.hinhanh != null)
                 {
-                    throw;
+                    if (System.IO.File.Exists(oldImageName))
+                    {
+                        System.IO.File.Delete(oldImageName);
+                    }
+                }
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    monAn.File.CopyTo(stream);
+
+                    monan.tenmonan = monAn.tenmonan;
+                    monan.dongia = monAn.dongia;
+                    monan.hinhanh = newFileName;
+                    monan.trangthai = monAn.trangthai;
+                    monan.noidung = monAn.noidung;
+                    monan.id_loaimonan = monAn.id_loaimonan;
+
+                    _context.SaveChanges();
                 }
             }
 
-            return NoContent();
+            return new BaseRespone()
+            {
+                ErrorCode = 0
+            };
         }
 
         // POST: api/MonAn
         [HttpPost]
-        //public async Task<ActionResult<MonAn>> PostMonAn(MonAn monAn)
-        //{
-        //    _context.MonAns.Add(monAn);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
-        //}
         public async Task<ActionResult<BaseRespone>> PostMonAn([FromForm]MonAn monAn)
         {
             try

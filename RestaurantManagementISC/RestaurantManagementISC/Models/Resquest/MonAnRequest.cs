@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace RestaurantManagementISC.Models.VewModels
 {
     public class MonAnRequest
-    {      
+    {    
         public string tenmonan { get; set; }
 
         public double dongia { get; set; }
@@ -18,5 +20,8 @@ namespace RestaurantManagementISC.Models.VewModels
         public string noidung { get; set; }
 
         public int id_loaimonan { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; }
     }
 }

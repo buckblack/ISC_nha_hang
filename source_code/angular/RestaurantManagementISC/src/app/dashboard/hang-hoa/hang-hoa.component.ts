@@ -23,11 +23,15 @@ export class HangHoaComponent implements OnInit {
   nguyenlieus: NguyenLieu[];
   hangHoaMoi: MonanInfo = {} as MonanInfo; //Hàng hóa để thêm mới
   loaiHHs: ListLoaimonanInfo; //list id mã hàng hóa
+  hangHoaUpdate: MonanInfo = {} as MonanInfo; //Hàng hóa để cập nhật
   id_monan: number;
   trangthai: string;
+
   @ViewChild('modalAddNew') modalAddNew: ModalDirective;
   @ViewChild('modalDetail') modalDetail: ModalDirective;
   @ViewChild('modalcomfirm') modalcomfirm: ModalDirective;
+  @ViewChild('modalUpdate') modalUpdate: ModalDirective;
+
   constructor(private titleService: Title, private monanService: HangHoaService) { }
   ngOnInit() {
     this.titleService.setTitle('Sản phẩm');
@@ -37,6 +41,7 @@ export class HangHoaComponent implements OnInit {
   loadData() {
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
+      console.log(this.sanphams);
     });
   }
   tp_uptodown() {
@@ -171,5 +176,46 @@ export class HangHoaComponent implements OnInit {
       });
     });
     this.modalcomfirm.hide();
+  }
+  //cập nhật hàng hóa - biên
+  showCapNhat() {
+    this.monanService.getAllLoaiHangHoa().subscribe(result => {
+      this.loaiHHs = result;
+    });
+    this.hangHoaUpdate.id = this.detail.id;
+    this.hangHoaUpdate.tenmonan = this.detail.tenmonan;
+    this.hangHoaUpdate.dongia = this.detail.dongia;
+    this.hangHoaUpdate.hinhanh = this.detail.hinhanh;
+    this.hangHoaUpdate.trangthai = this.detail.trangthai;
+    this.hangHoaUpdate.noidung = this.detail.noidung;
+    this.cke_them = this.detail.noidung;
+    this.modalUpdate.show();
+  }
+
+// tslint:disable-next-line: member-ordering
+  imageUpdate: File = null;
+  handleUploadUpdate(event) {
+    this.imageUpdate = event.target.files[0];
+    this.hangHoaUpdate.hinhanh = this.imageUpdate.name;
+  }
+
+  capNhatHangHoa() {
+    console.log(this.hangHoaUpdate);
+    const formData: FormData = new FormData();
+
+    formData.append('tenmonan', this.hangHoaUpdate.tenmonan);
+    formData.append('dongia', this.hangHoaUpdate.dongia.toString());
+    formData.append('hinhanh', this.hangHoaUpdate.hinhanh);
+    formData.append('trangthai', this.hangHoaUpdate.trangthai);
+    formData.append('noidung', this.cke_them);
+    formData.append('id_loaimonan', this.hangHoaUpdate.id_loaimonan.toString());
+    formData.append('File', this.imageUpdate);
+
+    this.monanService.CapNhatHangHoa(formData, this.hangHoaUpdate.id).subscribe(result => {
+      if (result['errorCode'] === 0) {
+        this.loadData();
+        alert('Successed!');
+      }
+    });
   }
 }

@@ -26,3 +26,17 @@ D:\ISC\On-job\Project\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementI
 D:\ISC\On-job\Project\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.RazorTargetAssemblyInfo.cache
 D:\ISC\On-job\Project\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.dll
 D:\ISC\On-job\Project\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.pdb
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\bin\Debug\netcoreapp2.2\RestaurantManagementISC.deps.json
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\bin\Debug\netcoreapp2.2\RestaurantManagementISC.runtimeconfig.json
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\bin\Debug\netcoreapp2.2\RestaurantManagementISC.runtimeconfig.dev.json
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\bin\Debug\netcoreapp2.2\RestaurantManagementISC.dll
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\bin\Debug\netcoreapp2.2\RestaurantManagementISC.pdb
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.csprojAssemblyReference.cache
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.csproj.CoreCompileInputs.cache
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.RazorAssemblyInfo.cache
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.RazorAssemblyInfo.cs
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.AssemblyInfoInputs.cache
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.AssemblyInfo.cs
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.RazorTargetAssemblyInfo.cache
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.dll
+C:\Users\bienn\Desktop\Intake07\ISC_nha_hang\RestaurantManagementISC\RestaurantManagementISC\obj\Debug\netcoreapp2.2\RestaurantManagementISC.pdb
