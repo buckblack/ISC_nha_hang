@@ -88,7 +88,11 @@ namespace RestaurantManagementISC.Controllers
             {
                 return BadRequest();
             }
-
+            monan.tenmonan = monAn.tenmonan;
+            monan.dongia = monAn.dongia;
+            monan.trangthai = monAn.trangthai;
+            monan.noidung = monAn.noidung;
+            monan.id_loaimonan = monAn.id_loaimonan;
             if (monAn.File != null)
             {
                 var uploadFilesPath = Path.Combine(_hostingEnvironment.WebRootPath, "Data\\sanpham");
@@ -115,17 +119,10 @@ namespace RestaurantManagementISC.Controllers
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     monAn.File.CopyTo(stream);
-
-                    monan.tenmonan = monAn.tenmonan;
-                    monan.dongia = monAn.dongia;
                     monan.hinhanh = newFileName;
-                    monan.trangthai = monAn.trangthai;
-                    monan.noidung = monAn.noidung;
-                    monan.id_loaimonan = monAn.id_loaimonan;
-
-                    _context.SaveChanges();
                 }
             }
+            _context.SaveChanges();
 
             return new BaseRespone()
             {

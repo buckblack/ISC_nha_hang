@@ -11,10 +11,9 @@ namespace RestaurantManagementISC.Models
     public class ThongKeSoLuong
     {
         [Key]
-        public int id_mon { get; set; }
-        public string ma_ten { get; set; }
-        [Key]
+        public string khoa { get; set; }
+        public string ten_mon { get; set; }
         public DateTime ngay { get; set; }
-        public int soluong { get; set; }
+        public int so_luong { get; set; }
     }
 }

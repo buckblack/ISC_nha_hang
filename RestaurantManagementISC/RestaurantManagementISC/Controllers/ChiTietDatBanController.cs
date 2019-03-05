@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Resquest;
 using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
@@ -28,10 +30,11 @@ namespace RestaurantManagementISC.Controllers
             return await _context.ChiTietDatBans.Include(x => x.MonAn).Include(x => x.HoaDon).ToListAsync();
         }
 
-        [HttpGet("thongkesoluong")]
-        public async Task<ActionResult<BaseRespone>> GetSoluongBan()
+        [HttpPost("thongkesoluong")]
+        public async Task<ActionResult<BaseRespone>> GetSoluongBan(DoanhthuResquest resquest)
         {
-            return new BaseRespone(await _context.ThongKeSoLuongs.FromSql("select * from view_thongke_soluong").ToListAsync());
+            await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_so_luong_ban @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+            return new BaseRespone(await _context.ThongKeSoLuongs.ToListAsync());
         }
 
         //kiểm tra đã gọi món đó chưa

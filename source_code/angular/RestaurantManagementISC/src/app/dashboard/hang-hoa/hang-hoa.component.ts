@@ -41,7 +41,6 @@ export class HangHoaComponent implements OnInit {
   loadData() {
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
-      console.log(this.sanphams);
     });
   }
   tp_uptodown() {
@@ -188,11 +187,13 @@ export class HangHoaComponent implements OnInit {
     this.hangHoaUpdate.hinhanh = this.detail.hinhanh;
     this.hangHoaUpdate.trangthai = this.detail.trangthai;
     this.hangHoaUpdate.noidung = this.detail.noidung;
+    this.hangHoaUpdate.id_loaimonan = this.detail.id_loaimonan;
     this.cke_them = this.detail.noidung;
+    this.modalDetail.hide();
     this.modalUpdate.show();
   }
 
-// tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: member-ordering
   imageUpdate: File = null;
   handleUploadUpdate(event) {
     this.imageUpdate = event.target.files[0];
@@ -214,7 +215,10 @@ export class HangHoaComponent implements OnInit {
     this.monanService.CapNhatHangHoa(formData, this.hangHoaUpdate.id).subscribe(result => {
       if (result['errorCode'] === 0) {
         this.loadData();
-        alert('Successed!');
+        alert('Thành công!');
+        this.modalUpdate.hide();
+      } else {
+        alert("Có lỗi xảy ra");
       }
     });
   }
