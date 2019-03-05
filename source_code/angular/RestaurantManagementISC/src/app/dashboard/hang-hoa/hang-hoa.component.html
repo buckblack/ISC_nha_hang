@@ -153,7 +153,7 @@
                                             <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
                                             -->
                   <ul class="nav nav-pills nav-fill m-3">
-                    <li class="nav-item" id="btn_capnhat" data-dismiss="modal" data-toggle="modal" data-target="#modal-update">
+                    <li class="nav-item" id="btn_capnhat">
                         <button class="nav-link btn btn-success btn-lg mx-2 mt-2" (click)="showCapNhat()"><i class="fa fa-check-circle-o"></i>
                           Cập nhật</button>
                     </li>
@@ -274,8 +274,8 @@
                 </div>
                 <div class="form-group">
                   <label>Loại hàng</label>
-                  <select class="form-control" [value] = "2" [(ngModel)]="hangHoaUpdate.id_loaimonan">
-                    <option *ngFor="let item of loaiHHs" value="{{item.id}}">{{item.tenloai}}</option>
+                  <select class="form-control" [(ngModel)]="hangHoaUpdate.id_loaimonan">
+                    <option *ngFor="let item of loaiHHs" class="update_loaihang" value="{{item.id}}">{{item.tenloai}}</option>
                   </select>
                 </div>
                 <div class="form-group">

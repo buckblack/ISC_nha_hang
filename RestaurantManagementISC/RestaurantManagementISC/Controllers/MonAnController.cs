@@ -89,8 +89,6 @@ namespace RestaurantManagementISC.Controllers
                 return BadRequest();
             }
 
-            
-
             if (monAn.File != null)
             {
                 var uploadFilesPath = Path.Combine(_hostingEnvironment.WebRootPath, "Data\\sanpham");
@@ -104,7 +102,6 @@ namespace RestaurantManagementISC.Controllers
 
                 string newFileName = id + "_" + monAn.File.FileName;
 
-                monan.hinhanh = newFileName;
                 //lấy đường dẫn file mới
                 string path = _hostingEnvironment.WebRootPath + "\\Data\\sanpham\\" + newFileName;
 
@@ -121,13 +118,14 @@ namespace RestaurantManagementISC.Controllers
                     monAn.File.CopyTo(stream);
                 }
             }
+            _context.SaveChanges();
 
             monan.tenmonan = monAn.tenmonan;
             monan.dongia = monAn.dongia;
             monan.trangthai = monAn.trangthai;
             monan.noidung = monAn.noidung;
             monan.id_loaimonan = monAn.id_loaimonan;
-
+            monan.hinhanh = newFileName;
             _context.SaveChanges();
 
             return new BaseRespone()

@@ -16,6 +16,8 @@ import { ChartModule, HIGHCHARTS_MODULES  } from 'angular-highcharts';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as more from 'highcharts/highcharts-more.src';
 import { ModalModule } from 'ngx-bootstrap';
+import { ThongKeDoanhThuComponent } from './dashboard/thong-ke/thong-ke-doanh-thu/thong-ke-doanh-thu.component';
+import { ThongKeSoLuongComponent } from './dashboard/thong-ke/thong-ke-so-luong/thong-ke-so-luong.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ModalModule } from 'ngx-bootstrap';
     BanHangComponent,
     HangHoaComponent,
     ThongKeComponent,
-    HoaDonComponent
+    HoaDonComponent,
+    ThongKeDoanhThuComponent,
+    ThongKeSoLuongComponent
   ],
   imports: [
     BrowserModule,
