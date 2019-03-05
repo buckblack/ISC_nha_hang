@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Resquest;
+using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
@@ -35,10 +38,18 @@ namespace RestaurantManagementISC.Controllers
                 id_ban = x.id_ban,
                 id_khachhang = x.id_khachhang,
                 NhanVien = x.NhanVien,
-                KhachHang=x.KhachHang,
+                KhachHang = x.KhachHang,
                 Ban = x.Ban,
                 tongtien = _context.ChiTietDatBans.Where(t => t.id_hoadon == x.Id).Sum(t => t.soluong * t.dongia),
             }).ToListAsync();
+        }
+
+        [HttpPost("doanhthu")]
+        public async Task<ActionResult<BaseRespone>> GetDoanhThu(DoanhthuResquest resquest)
+        {
+            await _context.Database.ExecuteSqlCommandAsync("exec doanh_thu @from,@to",new SqlParameter("@from", resquest.dateFrom.ToShortDateString()),new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+            
+            return new BaseRespone(await _context.DoanhThus.AsNoTracking().ToListAsync());
         }
 
         // GET: api/HoaDons/5

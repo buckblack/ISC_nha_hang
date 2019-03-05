@@ -28,6 +28,12 @@ namespace RestaurantManagementISC.Controllers
             return await _context.ChiTietDatBans.Include(x => x.MonAn).Include(x => x.HoaDon).ToListAsync();
         }
 
+        [HttpGet("thongkesoluong")]
+        public async Task<ActionResult<BaseRespone>> GetSoluongBan()
+        {
+            return new BaseRespone(await _context.ThongKeSoLuongs.FromSql("select * from view_thongke_soluong").ToListAsync());
+        }
+
         //kiểm tra đã gọi món đó chưa
         [HttpPost("kiemtra")]
         public async Task<ActionResult<bool>> GetKiemtraMonan(ChitietRequest chitiet)
