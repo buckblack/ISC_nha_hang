@@ -274,7 +274,7 @@
                 </div>
                 <div class="form-group">
                   <label>Loại hàng</label>
-                  <select class="form-control" [(ngModel)]="hangHoaUpdate.id_loaimonan">
+                  <select class="form-control" [value] = "2" [(ngModel)]="hangHoaUpdate.id_loaimonan">
                     <option *ngFor="let item of loaiHHs" value="{{item.id}}">{{item.tenloai}}</option>
                   </select>
                 </div>

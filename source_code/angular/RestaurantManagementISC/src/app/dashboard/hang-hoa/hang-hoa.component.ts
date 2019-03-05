@@ -36,12 +36,10 @@ export class HangHoaComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Sản phẩm');
     this.loadData();
-
   }
   loadData() {
     this.monanService.getAllMonAn().subscribe(result => {
       this.sanphams = result;
-      console.log(this.sanphams);
     });
   }
   tp_uptodown() {
@@ -128,13 +126,11 @@ export class HangHoaComponent implements OnInit {
     this.monanService.getMonAn(id).subscribe(res => {
       this.id_monan = res.id;
       this.trangthai = res.trangthai;
-      console.log(this.id_monan);
       if (this.trangthai === 'đang kinh doanh') {
         const param = {
           trangthai: 'ngừng kinh doanh',
         };
         this.monanService.updateTinhTrangMonAn(param, this.id_monan).subscribe(result => {
-          console.log(result);
           if (document.getElementById('btn-tinhtrang').classList.contains('btn-danger')) {
             document.getElementById('btn-tinhtrang').classList.remove('btn-danger');
           }
@@ -185,6 +181,7 @@ export class HangHoaComponent implements OnInit {
     this.hangHoaUpdate.id = this.detail.id;
     this.hangHoaUpdate.tenmonan = this.detail.tenmonan;
     this.hangHoaUpdate.dongia = this.detail.dongia;
+    this.hangHoaUpdate.id_loaimonan = this.detail.id_loaimonan;
     this.hangHoaUpdate.hinhanh = this.detail.hinhanh;
     this.hangHoaUpdate.trangthai = this.detail.trangthai;
     this.hangHoaUpdate.noidung = this.detail.noidung;
@@ -200,7 +197,6 @@ export class HangHoaComponent implements OnInit {
   }
 
   capNhatHangHoa() {
-    console.log(this.hangHoaUpdate);
     const formData: FormData = new FormData();
 
     formData.append('tenmonan', this.hangHoaUpdate.tenmonan);
