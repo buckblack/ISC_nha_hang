@@ -134,7 +134,7 @@ select @soluongnhap
 	group by ctp.id_nguyenlieu) view2 on view1.nguyenlieuxuat=view2.nguyenlieunhap
 	where view1.nguyenlieuxuat=@id_nguyenlieu or view2.nguyenlieunhap=@id_nguyenlieu)
 
-declare @dateFrom date = '2019-3-3'
+declare @dateFrom date = '2019-1-1'
 declare @dateTo date = '2019-3-4'
 exec thong_ke_ton_kho @dateFrom,@dateTo
 select * from tmp_thong_ke_ton_kho
@@ -144,23 +144,24 @@ select * from NguyenLieu
 CREATE PROCEDURE thong_ke_ton_kho @dateFrom date,@dateTo date
 as
 delete from tmp_thong_ke_ton_kho
-DECLARE cursorNguyenlieu CURSOR FOR select id_nguyenlieu,nl_ten from NguyenLieu
+DECLARE cursorNguyenlieu CURSOR FOR select id_nguyenlieu,nl_ten,nl_donvitinh from NguyenLieu
 DECLARE @id_nguyenlieu int
 DECLARE @nl_ten nvarchar(100)
+DECLARE @nl_donvitinh nvarchar(50)
 declare @tondau float
 declare @toncuoi float
 declare @soluongnhap float
 declare @soluongxuat float
 open cursorNguyenlieu
-FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten
+FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten,@nl_donvitinh
 WHILE @@FETCH_STATUS = 0  
    BEGIN
 	exec tinh_so_luong_nhap @dateFrom, @dateTo,@id_nguyenlieu, @soluongnhap output
 	exec tinh_so_luong_xuat @dateFrom, @dateTo,@id_nguyenlieu, @soluongxuat output
 	exec tinh_ton_dau @dateFrom,@id_nguyenlieu, @tondau output
 	set @toncuoi=@tondau+@soluongnhap-@soluongxuat
-	insert into tmp_thong_ke_ton_kho values(@id_nguyenlieu,@nl_ten,@tondau,@soluongxuat,@soluongnhap,@toncuoi)
-    FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten
+	insert into tmp_thong_ke_ton_kho values(@id_nguyenlieu,@nl_ten,@nl_donvitinh,@tondau,@soluongxuat,@soluongnhap,@toncuoi)
+    FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten,@nl_donvitinh
    END;  
 CLOSE cursorNguyenlieu
 DEALLOCATE cursorNguyenlieu

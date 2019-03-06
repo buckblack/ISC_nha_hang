@@ -13,6 +13,7 @@ namespace RestaurantManagementISC.Models
         [Key]
         public int id_nguyenlieu { get; set; }
         public string tennguyenlieu { get; set; }
+        public string dvt { get; set; }
         public Nullable<double> tondau { get; set; }
         public Nullable<double> xuat { get; set; }
         public Nullable<double> nhap { get; set; }
