@@ -30,18 +30,16 @@
               <th>STT</th>
               <th>Ngày</th>
               <th>Tên hàng</th>
-              <th>Loại hàng</th>
               <th>Số lượng bán</th>
             </tr>
           </thead>
           <tbody>
 
-            <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
+            <tr *ngFor="let row of SoLuongs; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{row.ngay | date: 'dd/MM/yyyy'}}</td>
+              <td>{{row.ten_mon}}</td>
+              <td>{{row.so_luong}}</td>
             </tr>
 
           </tbody>

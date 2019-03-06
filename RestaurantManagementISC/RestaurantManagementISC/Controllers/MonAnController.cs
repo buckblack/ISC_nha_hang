@@ -116,6 +116,7 @@ namespace RestaurantManagementISC.Controllers
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     monAn.File.CopyTo(stream);
+                    monan.hinhanh = newFileName;
                 }
             }
             _context.SaveChanges();
@@ -124,8 +125,7 @@ namespace RestaurantManagementISC.Controllers
             monan.dongia = monAn.dongia;
             monan.trangthai = monAn.trangthai;
             monan.noidung = monAn.noidung;
-            monan.id_loaimonan = monAn.id_loaimonan;
-            monan.hinhanh = newFileName;
+            monan.id_loaimonan = monAn.id_loaimonan;          
             _context.SaveChanges();
 
             return new BaseRespone()
