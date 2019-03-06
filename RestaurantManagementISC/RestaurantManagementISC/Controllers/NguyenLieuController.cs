@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Resquest;
+using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
@@ -25,6 +28,13 @@ namespace RestaurantManagementISC.Controllers
         public async Task<ActionResult<IEnumerable<NguyenLieu>>> GetNguyenLieus()
         {
             return await _context.NguyenLieus.ToListAsync();
+        }
+
+        [HttpPost("thongketonkho")]
+        public async Task<ActionResult<BaseRespone>> GetTonKho(DoanhthuResquest resquest)
+        {
+            await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_ton_kho @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+            return new BaseRespone(await _context.ThongKeTonKhos.ToListAsync());
         }
 
         // GET: api/NguyenLieu/5

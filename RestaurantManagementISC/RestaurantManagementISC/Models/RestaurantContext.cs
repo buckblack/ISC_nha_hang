@@ -26,6 +26,6 @@ namespace RestaurantManagementISC.Models
         public DbSet<PhieuNhapTra> PhieuNhapTras { get; set; }
         public DbSet<DoanhThu> DoanhThus { get; set; }
         public DbSet<ThongKeSoLuong> ThongKeSoLuongs { get; set; }
-
+        public DbSet<ThongKeTonKho> ThongKeTonKhos { get; set; }
     }
 }

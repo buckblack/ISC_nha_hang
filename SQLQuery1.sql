@@ -70,3 +70,97 @@ select (CONVERT(nvarchar,v.id_monan)+CONVERT(nvarchar,v.ngay)) as khoa,v.ma_ten 
 
 exec thong_ke_so_luong_ban '1-1-2019', '3-4-2019'
 select * from tmp_so_luong_ban_duoc
+
+select * from PhieuNhapTra
+select * from HoaDon
+select * from ChiTietDatBan
+select * from CongThuc
+
+
+declare @dateFrom date = '2019-1-1'
+declare @dateTo date = '2019-3-4'
+declare @soluongnhap float
+exec tinh_so_luong_nhap '2019-1-1', '2019-3-4',3, @soluongnhap output
+select @soluongnhap
+
+	CREATE PROCEDURE tinh_so_luong_nhap @dateFrom date,@dateTo date, @id_nguyenlieu int, @soluongnhap float output
+	as
+	set @soluongnhap=(select (CASE WHEN soluongnhap is NULL THEN 0 ELSE soluongnhap END) as soluongnhap from 
+	--xuất nguyên liệu
+	(select ct.id_nguyenlieu as nguyenlieuxuat,sum(ct.ct_soluong*ctdb.ctdb_soluong) as soluongxuat from CongThuc ct,ChiTietDatBan ctdb,HoaDon hd
+	where ct.id_monan=ctdb.id_monan and hd.id_hoadon=ctdb.id_hoadon and (CONVERT(date,hd.hd_ngaydat)>=CONVERT(date,@dateFrom) and CONVERT(date,hd.hd_ngaydat)<=CONVERT(date,@dateTo))
+	group by ct.id_nguyenlieu) view1 full outer join
+	--nhập nguyên liệu
+	(select ctp.id_nguyenlieu as nguyenlieunhap,sum(ctp.ctp_soluong) as soluongnhap from PhieuNhapTra pn, ChiTietPhieu ctp
+	where pn.id_phieu=ctp.id_phieu
+	and (CONVERT(date,pn.pnt_ngaylap)>=CONVERT(date,@dateFrom) and CONVERT(date,pn.pnt_ngaylap)<=CONVERT(date,@dateTo))
+	group by ctp.id_nguyenlieu) view2 on view1.nguyenlieuxuat=view2.nguyenlieunhap
+	where view1.nguyenlieuxuat=@id_nguyenlieu or view2.nguyenlieunhap=@id_nguyenlieu)
+
+
+	CREATE PROCEDURE tinh_so_luong_xuat @dateFrom date,@dateTo date, @id_nguyenlieu int,@soluongxuat float output
+	as
+	set @soluongxuat=(select (CASE WHEN soluongxuat is NULL THEN 0 ELSE soluongxuat END) as soluongxuat from 
+	--xuất nguyên liệu
+	(select ct.id_nguyenlieu as nguyenlieuxuat,sum(ct.ct_soluong*ctdb.ctdb_soluong) as soluongxuat from CongThuc ct,ChiTietDatBan ctdb,HoaDon hd
+	where ct.id_monan=ctdb.id_monan and hd.id_hoadon=ctdb.id_hoadon and (CONVERT(date,hd.hd_ngaydat)>=CONVERT(date,@dateFrom) and CONVERT(date,hd.hd_ngaydat)<=CONVERT(date,@dateTo))
+	group by ct.id_nguyenlieu) view1 full outer join
+	--nhập nguyên liệu
+	(select ctp.id_nguyenlieu as nguyenlieunhap,sum(ctp.ctp_soluong) as soluongnhap from PhieuNhapTra pn, ChiTietPhieu ctp
+	where pn.id_phieu=ctp.id_phieu
+	and (CONVERT(date,pn.pnt_ngaylap)>=CONVERT(date,@dateFrom) and CONVERT(date,pn.pnt_ngaylap)<=CONVERT(date,@dateTo))
+	group by ctp.id_nguyenlieu) view2 on view1.nguyenlieuxuat=view2.nguyenlieunhap
+	where view1.nguyenlieuxuat=@id_nguyenlieu or view2.nguyenlieunhap=@id_nguyenlieu)
+
+
+	declare @dateFrom date = '2019-3-3'
+	declare @dateTo date = '2019-3-4'
+	declare @id_nguyenlieu int=8
+	declare @tondau float
+	exec tinh_ton_dau '2019-3-3',8,@tondau output
+	select @tondau
+	--tìm tồn đầu
+	CREATE PROCEDURE tinh_ton_dau @dateFrom date, @id_nguyenlieu int, @tondau float output
+	as
+	set @tondau=(select ((CASE WHEN soluongnhap is NULL THEN 0 ELSE soluongnhap END)- (CASE WHEN soluongxuat is NULL THEN 0 ELSE soluongxuat END))from 
+	--xuất nguyên liệu
+	(select ct.id_nguyenlieu as nguyenlieuxuat,sum(ct.ct_soluong*ctdb.ctdb_soluong) as soluongxuat from CongThuc ct,ChiTietDatBan ctdb,HoaDon hd
+	where ct.id_monan=ctdb.id_monan and hd.id_hoadon=ctdb.id_hoadon and CONVERT(date,hd.hd_ngaydat)<CONVERT(date,@dateFrom)
+	group by ct.id_nguyenlieu) view1 full outer join
+	--nhập nguyên liệu
+	(select ctp.id_nguyenlieu as nguyenlieunhap,sum(ctp.ctp_soluong) as soluongnhap from PhieuNhapTra pn, ChiTietPhieu ctp
+	where pn.id_phieu=ctp.id_phieu
+	and CONVERT(date,pn.pnt_ngaylap)<CONVERT(date,@dateFrom)
+	group by ctp.id_nguyenlieu) view2 on view1.nguyenlieuxuat=view2.nguyenlieunhap
+	where view1.nguyenlieuxuat=@id_nguyenlieu or view2.nguyenlieunhap=@id_nguyenlieu)
+
+declare @dateFrom date = '2019-3-3'
+declare @dateTo date = '2019-3-4'
+exec thong_ke_ton_kho @dateFrom,@dateTo
+select * from tmp_thong_ke_ton_kho
+
+select * from NguyenLieu
+
+CREATE PROCEDURE thong_ke_ton_kho @dateFrom date,@dateTo date
+as
+delete from tmp_thong_ke_ton_kho
+DECLARE cursorNguyenlieu CURSOR FOR select id_nguyenlieu,nl_ten from NguyenLieu
+DECLARE @id_nguyenlieu int
+DECLARE @nl_ten nvarchar(100)
+declare @tondau float
+declare @toncuoi float
+declare @soluongnhap float
+declare @soluongxuat float
+open cursorNguyenlieu
+FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten
+WHILE @@FETCH_STATUS = 0  
+   BEGIN
+	exec tinh_so_luong_nhap @dateFrom, @dateTo,@id_nguyenlieu, @soluongnhap output
+	exec tinh_so_luong_xuat @dateFrom, @dateTo,@id_nguyenlieu, @soluongxuat output
+	exec tinh_ton_dau @dateFrom,@id_nguyenlieu, @tondau output
+	set @toncuoi=@tondau+@soluongnhap-@soluongxuat
+	insert into tmp_thong_ke_ton_kho values(@id_nguyenlieu,@nl_ten,@tondau,@soluongxuat,@soluongnhap,@toncuoi)
+    FETCH NEXT FROM cursorNguyenlieu into @id_nguyenlieu,@nl_ten
+   END;  
+CLOSE cursorNguyenlieu
+DEALLOCATE cursorNguyenlieu
