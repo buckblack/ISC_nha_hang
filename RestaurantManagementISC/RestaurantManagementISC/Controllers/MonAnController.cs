@@ -104,12 +104,7 @@ namespace RestaurantManagementISC.Controllers
 
                 //lấy đường dẫn file mới
                 string path = _hostingEnvironment.WebRootPath + "\\Data\\sanpham\\" + newFileName;
-                //lưu file mới
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    monAn.File.CopyTo(stream);
-                    monan.hinhanh = newFileName;
-                }
+                
                 //xóa file cũ
                 if (monan.hinhanh != "")
                 {
@@ -119,7 +114,12 @@ namespace RestaurantManagementISC.Controllers
                     }
                 }
 
-                
+                //lưu file mới
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    monAn.File.CopyTo(stream);
+                    monan.hinhanh = newFileName;
+                }
             }
 
             monan.tenmonan = monAn.tenmonan;
