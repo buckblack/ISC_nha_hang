@@ -39,7 +39,7 @@ export class BanHangComponent implements OnInit {
     this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result => {
       this.chitietHDs = result;
       console.log(result);
-      
+
     });
     this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result => {
       this.tongtienHD = Number(result);
@@ -96,12 +96,19 @@ export class BanHangComponent implements OnInit {
         };
         this.hoadonService.postHoaDon(data).subscribe(kq => {
           this.banService.UpdateBan(data_ban, this.id_ban).subscribe(); //update bàn
-        });//thêm hóa don mới
+        });
+        // thêm hóa don mới
       }
-      //kiểm tra món ăn trước khi thêm
+      //  kiểm tra món ăn trước khi thêm
       this.banhangService.KiemTraMonAn(param).subscribe(result => {
-        //update lại trạng thái hóa đơn nếu trước đó đã thanh toán
-        this.hoadonService.updateThanhToan(this.id_hoadon, { trangthai: false, id_nhanvien: localStorage.getItem('userid').toString() }).subscribe();
+        //  update lại trạng thái hóa đơn nếu trước đó đã thanh toán
+        // tslint:disable-next-line: max-line-length
+        this.hoadonService.updateThanhToan(this.id_hoadon,
+          {
+            trangthai: false,
+             id_nhanvien: localStorage.getItem('userid').toString()
+          }).subscribe();
+
         if (result === true) {
           //thêm
           const ct = {
@@ -147,12 +154,12 @@ export class BanHangComponent implements OnInit {
       trangthai: false,
       id_nhanvien: localStorage.getItem('userid').toString(),
     };
-    this.hoadonService.updateThanhToan(this.id_hoadon, param).subscribe(kq1=>{
+    this.hoadonService.updateThanhToan(this.id_hoadon, param).subscribe(kq1 => {
       this.banhangService.UpdateSoluong(id_chitiet, data).subscribe(kq => {
         this.loadChitiet();
       });
     });
-    
+
   }
   printHD() {
     const ghi_chu = (<HTMLInputElement>document.getElementById('ghi_chu')).value;
