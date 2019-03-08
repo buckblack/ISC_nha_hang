@@ -12,6 +12,7 @@ export class ApiService {
     hoadon: this.baseUrl + 'hoadon',
     doanhthu: this.baseUrl + 'hoadon/doanhthu',
     thongkesoluong: this.baseUrl + 'chitietdatban/thongkesoluong',
+    thongketonkho: this.baseUrl + 'nguyenlieu/thongketonkho',
     chitietdatban: this.baseUrl + 'chitietdatban',
     congthucMonan: this.baseUrl + 'congthuc/monan/',
     nguyenlieu: this.baseUrl + 'nguyenlieu/tim',

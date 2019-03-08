@@ -37,14 +37,14 @@
           </thead>
           <tbody>
 
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let row of TonKhos; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{row.id_nguyenlieu}}</td>
+              <td>{{row.tennguyenlieu}}</td>
+              <td>{{row.tondau}}</td>
+              <td>{{row.nhap}}</td>
+              <td>{{row.xuat}}</td>
+              <td>{{row.toncuoi}}</td>
             </tr>
 
           </tbody>

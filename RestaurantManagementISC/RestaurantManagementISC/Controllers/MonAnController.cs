@@ -26,6 +26,38 @@ namespace RestaurantManagementISC.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        [HttpGet("page")]
+        public async Task<ActionResult<PagingRespone>> GetMonansPage([FromQuery] PagingRequest req)
+        {
+            var query = _context.MonAns.Where(x => x.trangthai != "xóa").Select(x => new MonAn
+            {
+                Id = x.Id,
+                hinhanh = Models.Ultis.Helper.getUrl(Request) + x.hinhanh,
+                dongia = x.dongia,
+                tenmonan = x.tenmonan,
+                noidung = x.noidung,
+                trangthai = x.trangthai,
+                LoaiMonAn = x.LoaiMonAn,
+                id_loaimonan = x.id_loaimonan,
+            });//.orderby() nếu cần
+            long totalRows = query.LongCount();
+            var pageCount = (double)totalRows / req.Size;
+            int totalPage = (int)Math.Ceiling(pageCount);
+            var skip = (req.Page - 1) * req.Size;
+            var results = await query.Skip(skip).Take(req.Size).ToListAsync();
+            return new PagingRespone
+            {
+                //Data = results,
+                pagingInfo = new PagingInfo
+                {
+                    CurrentPage = req.Page,
+                    PageSize = req.Size,
+                    TotalRecords = totalRows,
+                    TotalPages = totalPage
+                }
+            };
+        }
+
         // GET: api/MonAn
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MonAn>>> GetMonAns()

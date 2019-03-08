@@ -23,6 +23,20 @@ export interface SoLuongRespone {
   message: string;
   data: SoLuong[];
 }
+export interface TonKhoRespone {
+  errorCode: number;
+  message: string;
+  data: TonKho[];
+}
+export interface TonKho {
+  id_nguyenlieu: number;
+  tennguyenlieu: string;
+  dvt: string;
+  tondau: number;
+  xuat: number;
+  nhap: number;
+  toncuoi: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +48,8 @@ export class ThongKeService {
   }
   public getSoLuong(param): Observable<SoLuongRespone> {
     return this.http.post<SoLuongRespone>(this.api.apiUrl.thongkesoluong, param);
+  }
+  public getThongKeTonKho(param): Observable<TonKhoRespone> {
+    return this.http.post<TonKhoRespone>(this.api.apiUrl.thongketonkho, param);
   }
 }
