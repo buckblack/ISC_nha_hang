@@ -18,7 +18,7 @@
             <div class="float-right">
               <div class="dropdown-menu dropdown-menu-right bg-success float-right" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="check_masp" onclick="check_masp()">
+                  <input type="checkbox" class="form-check-input"  id="check_masp" onclick="check_masp()">
                   <label class="form-check-label">Mã sản phẩm</label>
                 </div>
                 <div class="dropdown-item form-group form-check">
@@ -48,7 +48,7 @@
           </thead>
           <tbody>
             <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(132,'/assets/images/1.png')"> -->
-            <tr *ngFor="let sanpham of sanphams; let i=index" (click)="modalDetail.show()" (click)="click_detail(sanpham.id)">
+            <tr *ngFor="let sanpham of sanphams; let i=index; " (click)="modalDetail.show()" (click)="click_detail(sanpham.id)">
               <td>{{i+1}}</td>
               <td class="table_hinh d-none"><img src="{{sanpham.hinhanh}}" style="width: 100px;" alt=""></td>
               <td class="table_masp d-none">{{sanpham.id}}</td>
@@ -69,6 +69,7 @@
                                 </tr> -->
           </tbody>
         </table>
+     
         <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center">
             <li class="page-item disabled">

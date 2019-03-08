@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Respone;
+using RestaurantManagementISC.Models.Resquest;
 using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
@@ -135,6 +137,46 @@ namespace RestaurantManagementISC.Controllers
                 ErrorCode = 0
             };
         }
+
+        //paging món ăn
+        //[HttpGet("paging")]
+        //public async Task<ActionResult<PagingRespone>> Get([FromQuery] PagingRequest req)
+        //{
+        //    var query = _context.MonAns.Include(x => x.LoaiMonAn).AsNoTracking().
+        //        Select(x => new MonAn
+        //        {
+        //            Id = x.Id,
+        //            tenmonan = x.tenmonan,
+        //            dongia = x.dongia,
+        //            hinhanh = x.hinhanh,
+        //            noidung = x.noidung,
+        //            trangthai = x.trangthai,
+        //            id_loaimonan = x.id_loaimonan,
+        //            LoaiMonAn = x.LoaiMonAn
+
+        //        });
+
+        //    long totalRows = await query.LongCountAsync();
+        //    var pageCount = (double)totalRows / req.Size;
+        //    int totalPage = (int)Math.Ceiling(pageCount);
+
+        //    var skip = (req.Page - 1) * req.Size;
+        //    var result = await query.Skip(skip).Take(req.Size).ToListAsync();
+
+        //    return new PagingRespone
+        //    {
+        //        data = result,
+        //        pagingInfo = new PagingInfo
+        //        {
+        //            CurrentPage = req.Page,
+        //            PageSize = req.Size,
+        //            TotalRecords = totalRows,
+        //            TotalPages = totalPage
+        //        }
+        //        //,ErrorCode = 0,
+        //        //Message = "Successed !"
+        //    };
+        //}
 
         // POST: api/MonAn
         [HttpPost]

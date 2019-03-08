@@ -95,7 +95,7 @@ export class BanHangComponent implements OnInit {
           hoadonphucvu: this.id_hoadon,
         };
         this.hoadonService.postHoaDon(data).subscribe(kq => {
-          this.banService.UpdateBan(data_ban, this.id_ban).subscribe(); //update bàn
+          this.banService.UpdateBan(data_ban, this.id_ban).subscribe(); // update bàn
         });
         // thêm hóa don mới
       }
@@ -110,7 +110,7 @@ export class BanHangComponent implements OnInit {
           }).subscribe();
 
         if (result === true) {
-          //thêm
+          // thêm
           const ct = {
             soluong: 1,
             dongia: gia,
