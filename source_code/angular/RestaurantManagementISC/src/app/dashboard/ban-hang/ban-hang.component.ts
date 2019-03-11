@@ -31,6 +31,9 @@ export class BanHangComponent implements OnInit {
     this.banService.getAllban().subscribe(result => {
       this.bans = result;
     });
+    this.loadMonan();
+  }
+  loadMonan() {
     this.monanService.getAllMonAnBanHang().subscribe(result => {
       this.monans = result;
     });
@@ -106,7 +109,7 @@ export class BanHangComponent implements OnInit {
         this.hoadonService.updateThanhToan(this.id_hoadon,
           {
             trangthai: false,
-             id_nhanvien: localStorage.getItem('userid').toString()
+            id_nhanvien: localStorage.getItem('userid').toString()
           }).subscribe();
 
         if (result === true) {

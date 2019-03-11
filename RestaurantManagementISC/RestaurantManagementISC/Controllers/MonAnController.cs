@@ -109,7 +109,17 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet("tim")]
         public async Task<ActionResult<IEnumerable<MonAn>>> GetTimNguyenLieu([FromQuery] string q)
         {
-            return await _context.MonAns.Where(x => x.tenmonan.Contains(q)).ToListAsync();
+            return await _context.MonAns.Where(x => x.trangthai == "đang kinh doanh").Where(x =>  x.tenmonan.Contains(q)).Select(x => new MonAn
+            {
+                Id = x.Id,
+                hinhanh = Models.Ultis.Helper.getUrl(Request) + x.hinhanh,
+                dongia = x.dongia,
+                tenmonan = x.tenmonan,
+                noidung = x.noidung,
+                trangthai = x.trangthai,
+                LoaiMonAn = x.LoaiMonAn,
+                id_loaimonan = x.id_loaimonan,
+            }).ToListAsync();
         }
 
 
