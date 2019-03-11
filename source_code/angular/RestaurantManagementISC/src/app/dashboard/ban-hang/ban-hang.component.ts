@@ -31,7 +31,7 @@ export class BanHangComponent implements OnInit {
     this.banService.getAllban().subscribe(result => {
       this.bans = result;
     });
-    this.monanService.getAllMonAn().subscribe(result => {
+    this.monanService.getAllMonAnBanHang().subscribe(result => {
       this.monans = result;
     });
   }

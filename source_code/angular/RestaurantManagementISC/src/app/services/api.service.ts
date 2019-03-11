@@ -8,6 +8,7 @@ export class ApiService {
   apiUrl = {
     login: this.baseUrl + 'nhanvien/login',
     monan: this.baseUrl + 'monan',
+    banhang: this.baseUrl +'monan/banhang',
     loaimonan: this.baseUrl + 'loaimonan',
     hoadon: this.baseUrl + 'hoadon',
     doanhthu: this.baseUrl + 'hoadon/doanhthu',

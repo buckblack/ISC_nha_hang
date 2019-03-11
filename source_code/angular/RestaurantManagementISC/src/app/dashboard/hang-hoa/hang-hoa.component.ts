@@ -135,7 +135,7 @@ export class HangHoaComponent implements OnInit {
             document.getElementById('btn-tinhtrang').classList.remove('btn-danger');
           }
           document.getElementById('btn-tinhtrang').classList.add('btn-success');
-
+          this.loadData();
         });
       } else {
         const param = {
@@ -147,12 +147,11 @@ export class HangHoaComponent implements OnInit {
             document.getElementById('btn-tinhtrang').classList.remove('btn-success');
           }
           document.getElementById('btn-tinhtrang').classList.add('btn-danger');
-
+          this.loadData();
         });
       }
     });
     this.modalDetail.hide();
-    this.loadData();
   }
   deleteHangHoa_confirm(event) {
     event.preventDefault();

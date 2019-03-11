@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Ultis;
 using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
@@ -31,7 +32,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<BaseRespone>> GetInfoLogin(LoginRequest lg)
         {
-            NhanVien nv= await _context.NhanViens.FirstOrDefaultAsync(x=>x.password==lg.password && x.email==lg.email);
+            NhanVien nv= await _context.NhanViens.FirstOrDefaultAsync(x=>x.password== Helper.GenHash(lg.password) && x.email==lg.email);
             LoginRespone loginRespone = new LoginRespone();
             if (nv != null)
             {
@@ -98,7 +99,7 @@ namespace RestaurantManagementISC.Controllers
             nVien.honhanvien = nhanVien.honhanvien;
             nVien.tennhanvien = nhanVien.tennhanvien;
             nVien.email = nhanVien.email;
-            nVien.password = nhanVien.password;
+            nVien.password = Helper.GenHash(nhanVien.password);
             nVien.trangthai = nhanVien.trangthai;
             _context.NhanViens.Update(nVien);
             await _context.SaveChangesAsync();
@@ -109,6 +110,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpPost]
         public async Task<ActionResult<NhanVien>> PostNhanVien(NhanVien nhanVien)
         {
+            nhanVien.password = Helper.GenHash(nhanVien.password);
             _context.NhanViens.Add(nhanVien);
             await _context.SaveChangesAsync();
 

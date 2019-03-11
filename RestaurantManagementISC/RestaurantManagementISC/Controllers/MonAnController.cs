@@ -62,15 +62,32 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MonAn>>> GetMonAns()
         {
-            return await _context.MonAns.Where(x => x.trangthai != "xóa").Select(x => new MonAn {
+            return await _context.MonAns.Where(x => x.trangthai != "xóa").Select(x => new MonAn
+            {
                 Id = x.Id,
                 hinhanh = Models.Ultis.Helper.getUrl(Request) + x.hinhanh,
-                dongia=x.dongia,
-                tenmonan=x.tenmonan,
-                noidung=x.noidung,
-                trangthai=x.trangthai,
-                LoaiMonAn=x.LoaiMonAn,
-                id_loaimonan=x.id_loaimonan,
+                dongia = x.dongia,
+                tenmonan = x.tenmonan,
+                noidung = x.noidung,
+                trangthai = x.trangthai,
+                LoaiMonAn = x.LoaiMonAn,
+                id_loaimonan = x.id_loaimonan,
+            }).ToListAsync();
+        }
+
+        [HttpGet("banhang")]
+        public async Task<ActionResult<IEnumerable<MonAn>>> GetBanHang()
+        {
+            return await _context.MonAns.Where(x => x.trangthai == "đang kinh doanh").Select(x => new MonAn
+            {
+                Id = x.Id,
+                hinhanh = Models.Ultis.Helper.getUrl(Request) + x.hinhanh,
+                dongia = x.dongia,
+                tenmonan = x.tenmonan,
+                noidung = x.noidung,
+                trangthai = x.trangthai,
+                LoaiMonAn = x.LoaiMonAn,
+                id_loaimonan = x.id_loaimonan,
             }).ToListAsync();
         }
 
