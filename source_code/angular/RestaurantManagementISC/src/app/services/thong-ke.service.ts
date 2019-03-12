@@ -37,6 +37,12 @@ export interface TonKho {
   nhap: number;
   toncuoi: number;
 }
+export interface TongThuChi {
+  tongthu: number;
+  thongchi: number;
+  maxthu: number;
+  maxchi: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +57,8 @@ export class ThongKeService {
   }
   public getThongKeTonKho(param): Observable<TonKhoRespone> {
     return this.http.post<TonKhoRespone>(this.api.apiUrl.thongketonkho, param);
+  }
+  public postThuChi(param): Observable<TongThuChi> {
+    return this.http.post<TongThuChi>(this.api.apiUrl.tongthuchi, param);
   }
 }

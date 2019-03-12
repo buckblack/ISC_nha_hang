@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Respone;
 using RestaurantManagementISC.Models.Resquest;
 using RestaurantManagementISC.Models.VewModels;
 
@@ -47,9 +48,20 @@ namespace RestaurantManagementISC.Controllers
         [HttpPost("doanhthu")]
         public async Task<ActionResult<BaseRespone>> GetDoanhThu(DoanhthuResquest resquest)
         {
-            await _context.Database.ExecuteSqlCommandAsync("exec doanh_thu @from,@to",new SqlParameter("@from", resquest.dateFrom.ToShortDateString()),new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
-            
+            await _context.Database.ExecuteSqlCommandAsync("exec doanh_thu @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+
             return new BaseRespone(await _context.DoanhThus.AsNoTracking().ToListAsync());
+        }
+        [HttpPost("doanhthu/tongthuchi")]
+        public async Task<ActionResult<ThuChiRespone>> GetThuChi(DoanhthuResquest resquest)
+        {
+            return new ThuChiRespone
+            {
+                tongchi = _context.DoanhThus.Sum(x => x.chi),
+                tongthu = _context.DoanhThus.Sum(x => x.thu),
+                maxchi = _context.DoanhThus.Max(x => x.chi),
+                maxthu = _context.DoanhThus.Max(x => x.thu)
+            };
         }
 
         // GET: api/HoaDons/5

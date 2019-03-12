@@ -23,7 +23,8 @@ const routes: Routes = [
       { path: 'thong-ke', component: ThongKeComponent },
       { path: 'thong-ke-doanh-thu', component: ThongKeDoanhThuComponent },
       { path: 'thong-ke-so-luong', component: ThongKeSoLuongComponent },
-      { path: 'thong-ke-ton-kho', component: ThongKeTonKhoComponent }]
+      { path: 'thong-ke-ton-kho', component: ThongKeTonKhoComponent },
+      { path: 'thong-ke', component: ThongKeComponent }]
   },
 ];
 

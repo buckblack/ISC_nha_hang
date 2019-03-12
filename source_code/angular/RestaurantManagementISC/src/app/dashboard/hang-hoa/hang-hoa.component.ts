@@ -103,7 +103,9 @@ export class HangHoaComponent implements OnInit {
         alert('Lỗi');
         return;
       }
+
       this.modalAddNew.hide();
+      this.loadData();
       alert('Thêm thành công');
     });
 

@@ -34,7 +34,12 @@ namespace RestaurantManagementISC.Controllers
         public async Task<ActionResult<BaseRespone>> GetSoluongBan(DoanhthuResquest resquest)
         {
             await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_so_luong_ban @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
-            return new BaseRespone(await _context.ThongKeSoLuongs.ToListAsync());
+            var data = await _context.ThongKeSoLuongs.GroupBy(x => x.ten_mon).Select(x => new ThongKeSoLuong
+            {
+                ten_mon=x.Key,
+                so_luong=x.Sum(t=>t.so_luong)
+            }).ToListAsync();
+            return new BaseRespone(data);
         }
 
         //kiểm tra đã gọi món đó chưa
