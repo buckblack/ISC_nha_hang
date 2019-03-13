@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ThongKeService, DoanhthusRespone, Doanhthu, TongThuChi } from 'src/app/services/thong-ke.service';
 import { Chart } from 'angular-highcharts';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-thong-ke-doanh-thu',
@@ -10,7 +11,7 @@ import { Chart } from 'angular-highcharts';
 })
 export class ThongKeDoanhThuComponent implements OnInit {
   Doanhthus: Doanhthu[];
-  dateTo: Date;
+  dateTo;
   dateFrom;
   TongThuChi: TongThuChi;
   chart: Chart;
@@ -19,10 +20,8 @@ export class ThongKeDoanhThuComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Thống kê doanh thu');
-    const d = new Date().toLocaleDateString('en-GB');
-    this.dateFrom = d//'2019-03-12';
-    console.log(d);
-    
+    this.dateFrom = formatDate(new Date(), 'yyyy-MM-dd', 'en-GB');
+    this.dateTo = formatDate(new Date(), 'yyyy-MM-dd', 'en-GB');
   }
 
   loadData() {
@@ -40,7 +39,7 @@ export class ThongKeDoanhThuComponent implements OnInit {
         result.data.forEach(element => {
           arrthu.push(element.thu);
           arrchi.push(element.chi);
-          arrngay.push((element.ngay));
+          arrngay.push(formatDate(element.ngay, 'dd-MM-yyyy', 'en-GB'));
         });
         this.chart = new Chart({
           lang: {
@@ -68,7 +67,7 @@ export class ThongKeDoanhThuComponent implements OnInit {
             y: 20,
           },
           subtitle: {
-            text: `Từ ${this.dateFrom} đến ${this.dateTo}`
+            text: `Từ ${formatDate(this.dateFrom, 'dd-MM-yyyy', 'en-GB')} đến ${formatDate(this.dateTo, 'dd-MM-yyyy', 'en-GB')}`
           },
           xAxis: {
             categories: arrngay

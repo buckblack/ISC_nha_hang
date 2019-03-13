@@ -28,7 +28,6 @@
           <thead>
             <tr>
               <th>STT</th>
-              <th>Ngày</th>
               <th>Tên hàng</th>
               <th>Số lượng bán</th>
             </tr>
@@ -37,7 +36,6 @@
 
             <tr *ngFor="let row of SoLuongs | paginate: { itemsPerPage: 20, currentPage: page }; let i=index">
               <td>{{i+1}}</td>
-              <td>{{row.ngay | date: 'dd/MM/yyyy'}}</td>
               <td>{{row.ten_mon}}</td>
               <td>{{row.so_luong}}</td>
             </tr>

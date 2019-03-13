@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SoLuong, ThongKeService } from 'src/app/services/thong-ke.service';
 import { Title } from '@angular/platform-browser';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-thong-ke-so-luong',
@@ -9,12 +10,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class ThongKeSoLuongComponent implements OnInit {
   SoLuongs: SoLuong[];
-  dateTo: Date;
-  dateFrom: Date;
+  dateTo;
+  dateFrom;
   constructor(private titleService: Title, private thongkeService: ThongKeService) { }
 
   ngOnInit() {
     this.titleService.setTitle('Thống kê số lượng bán được');
+    this.dateFrom = formatDate(new Date(), 'yyyy-MM-dd', 'en-GB');
+    this.dateTo = formatDate(new Date(), 'yyyy-MM-dd', 'en-GB');
   }
   loadData() {
     const param = {
