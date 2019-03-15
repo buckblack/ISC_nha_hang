@@ -16,6 +16,16 @@
               <label for=""><strong>Đến ngày</strong></label>
               <input type="date" class="form-control" [(ngModel)]="dateTo" name="" id="">
             </div>
+            
+            <div class="text-center">
+              
+                <label for="nguyenlieu"><strong>Nguyên liệu</strong></label>
+                <select class="form-control" [(ngModel)]="select_nl">
+                  <option value="0">Tất cả</option>
+                  <option *ngFor="let item of nguyenlieus" value="{{item.id}}">{{item.tennguyenlieu}}</option>
+                </select>
+              
+            </div>
             <div class="text-center">
               <button class="btn btn-group-lg btn-success h-auto" (click)="click()"><i class="fa fa-search"> Tìm</i></button>
             </div>

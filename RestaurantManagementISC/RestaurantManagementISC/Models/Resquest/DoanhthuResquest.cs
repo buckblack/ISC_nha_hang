@@ -7,6 +7,7 @@ namespace RestaurantManagementISC.Models.Resquest
 {
     public class DoanhthuResquest
     {
+        public int idnguyenlieu { get; set; }
         public DateTime dateFrom { get; set; }
         public DateTime dateTo { get; set; }
     }

@@ -43,6 +43,15 @@ export interface TongThuChi {
   maxthu: number;
   maxchi: number;
 }
+export interface NguyenLieu {
+  id: number;
+  tennguyenlieu: string;
+  donvitinh: string;
+  soluong: number;
+}
+export interface ListNguyenLieu {
+  list: NguyenLieu;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -60,5 +69,8 @@ export class ThongKeService {
   }
   public postThuChi(param): Observable<TongThuChi> {
     return this.http.post<TongThuChi>(this.api.apiUrl.tongthuchi, param);
+  }
+  public getAllNguyenLieu(): Observable<ListNguyenLieu> {
+    return this.http.get<ListNguyenLieu>(this.api.apiUrl.nguyenlieumonan);
   }
 }

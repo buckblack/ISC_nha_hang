@@ -33,9 +33,23 @@ namespace RestaurantManagementISC.Controllers
         [HttpPost("thongketonkho")]
         public async Task<ActionResult<BaseRespone>> GetTonKho(DoanhthuResquest resquest)
         {
+            if (resquest.idnguyenlieu == 0)
+            {
+                await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_ton_kho @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+                return new BaseRespone(await _context.ThongKeTonKhos.ToListAsync());
+            }
             await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_ton_kho @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
-            return new BaseRespone(await _context.ThongKeTonKhos.ToListAsync());
+            var a = await _context.ThongKeTonKhos.Where(x => x.id_nguyenlieu == resquest.idnguyenlieu).ToListAsync();
+            return new BaseRespone(a);
         }
+
+        //[HttpPost("thongketonkho/{idnguyenlieu}")]
+        //public async Task<ActionResult<BaseRespone>> GetTonKhoTheoNguyenLieu(DoanhthuResquest resquest, int idnguyenlieu)
+        //{
+        //    await _context.Database.ExecuteSqlCommandAsync("exec thong_ke_ton_kho @from,@to", new SqlParameter("@from", resquest.dateFrom.ToShortDateString()), new SqlParameter("@to", resquest.dateTo.ToShortDateString()));
+        //    var a = await _context.ThongKeTonKhos.Where(x => x.id_nguyenlieu == idnguyenlieu).ToListAsync();
+        //    return new BaseRespone(a);
+        //}
 
         // GET: api/NguyenLieu/5
         [HttpGet("{id}")]
