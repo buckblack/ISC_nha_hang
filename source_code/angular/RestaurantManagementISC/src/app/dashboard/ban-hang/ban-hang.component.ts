@@ -41,7 +41,7 @@ export class BanHangComponent implements OnInit {
   loadChitiet() {
     this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result => {
       this.chitietHDs = result;
-      console.log(result);
+      //console.log(result);
 
     });
     this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result => {

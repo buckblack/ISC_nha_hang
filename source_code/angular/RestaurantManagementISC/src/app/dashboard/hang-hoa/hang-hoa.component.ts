@@ -47,7 +47,7 @@ export class HangHoaComponent implements OnInit {
       alert("Chưa chọn nguyên liệu");
       return;
     }
-    if (this.ip_tp_soluong === undefined || this.ip_tp_soluong === null || this.ip_tp_soluong === 0) {
+    if (this.ip_tp_soluong === undefined || this.ip_tp_soluong === null || this.ip_tp_soluong <= 0) {
       alert("Số lượng nguyên liệu không hợp lệ");
       return;
     }

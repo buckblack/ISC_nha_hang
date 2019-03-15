@@ -12949,11 +12949,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
+      "projectUniqueName": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
       "projectName": "RestaurantManagementISC",
-      "projectPath": "E:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
+      "projectPath": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\RestaurantManagementISC.csproj",
       "packagesPath": "C:\\Users\\isc\\.nuget\\packages\\",
-      "outputPath": "E:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\obj\\",
+      "outputPath": "D:\\ISC_nha_hang\\RestaurantManagementISC\\RestaurantManagementISC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
