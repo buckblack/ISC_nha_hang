@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HoaDonController : ControllerBase

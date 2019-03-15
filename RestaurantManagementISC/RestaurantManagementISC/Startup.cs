@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,8 +13,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.Ultis;
 
 namespace RestaurantManagementISC
 {
@@ -35,6 +39,19 @@ namespace RestaurantManagementISC
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<RestaurantContext>(options => options.UseSqlServer(connectionString));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = "https://localhost:44306",
+                    ValidAudience = "https://localhost:44306",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Helper.AppKey))
+                };
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
                 {
@@ -67,6 +84,7 @@ namespace RestaurantManagementISC
             app.UseStaticFiles();
             app.UseCors("AllowSpecificOrigin");
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

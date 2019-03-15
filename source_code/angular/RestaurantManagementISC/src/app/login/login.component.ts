@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         } else {
           localStorage.setItem('username', result.data.ho + ' ' + result.data.ten);
           localStorage.setItem('userid', result.data.id.toString());
+          localStorage.setItem('token', result.data.token);
           this.router.navigate(['/dashboard']);
         }
       }

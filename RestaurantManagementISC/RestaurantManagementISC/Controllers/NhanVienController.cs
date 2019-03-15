@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RestaurantManagementISC.Models;
 using RestaurantManagementISC.Models.Ultis;
 using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NhanVienController : ControllerBase
@@ -28,7 +34,7 @@ namespace RestaurantManagementISC.Controllers
         {
             return await _context.NhanViens.ToListAsync();
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<BaseRespone>> GetInfoLogin(LoginRequest lg)
         {
@@ -36,10 +42,23 @@ namespace RestaurantManagementISC.Controllers
             LoginRespone loginRespone = new LoginRespone();
             if (nv != null)
             {
+                //generate token
+                var clainmData = new[] { new Claim(ClaimTypes.Name, lg.email) };
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Helper.AppKey));
+                var singingCredential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(
+                    issuer: Helper.issuer,
+                    audience: Helper.issuer,
+                    expires: DateTime.Now.AddMinutes(60),
+                    claims: clainmData,
+                    signingCredentials: singingCredential
+                );
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
                 loginRespone.id = nv.Id;
                 loginRespone.ten = nv.tennhanvien;
                 loginRespone.ho = nv.honhanvien;
-                loginRespone.token = "";
+                loginRespone.token = tokenString;
                 loginRespone.trangthai = nv.trangthai;
                 return new BaseRespone(loginRespone);
             }
